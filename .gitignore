@@ -36,6 +36,18 @@ yarn-error.log*
 # vercel
 .vercel
 
+# fonts (large binary files, not needed for web)
+/fonts/
+
+# PDF generation scripts (dropped)
+/scripts/
+
+# design artifacts
+design-dna.json
+
+# output (strategy documents, not needed for deployment)
+/output/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
