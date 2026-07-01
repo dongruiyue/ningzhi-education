@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description:
     "宁致教育是深圳领先的英语培训机构。留学英语（雅思A类）、校内提升（KET/PET）、成人英语，真经教学体系，小而精，严抓督学。",
   keywords: ["深圳英语培训", "雅思培训", "KET", "PET", "留学英语", "成人英语"],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "zh_CN",
