@@ -310,6 +310,8 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .pc-handle {
@@ -317,12 +319,20 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pc-status {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .pc-contact-btn {

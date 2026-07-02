@@ -26,6 +26,7 @@ export interface ProfileCardProps {
   behindGlowSize?: string;
   className?: string;
   enableTilt?: boolean;
+  enableHolo?: boolean;
   enableMobileTilt?: boolean;
   onContactClick?: () => void;
   /** Extra content shown below name/title (e.g. skill tags) */
@@ -43,6 +44,7 @@ function ProfileCardComponent({
   behindGlowSize,
   className = '',
   enableTilt = true,
+  enableHolo = true,
   enableMobileTilt = false,
   miniAvatarUrl,
   name,
@@ -269,8 +271,8 @@ function ProfileCardComponent({
       <div ref={shellRef} className="pc-card-shell">
         <section className="pc-card">
           <div className="pc-inside">
-            <div className="pc-shine" />
-            <div className="pc-glare" />
+            {enableHolo && <div className="pc-shine" />}
+            {enableHolo && <div className="pc-glare" />}
             <div className="pc-content pc-avatar-content">
               {avatarUrl ? (
                 <img
@@ -283,35 +285,17 @@ function ProfileCardComponent({
                   }}
                 />
               ) : (
-                <div
-                  className="avatar-fallback"
-                  style={{
-                    width: '100%',
-                    position: 'absolute',
-                    left: '50%',
-                    transform: 'translateX(-50%) translateZ(0)',
-                    bottom: '25%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backfaceVisibility: 'hidden',
-                  }}
-                >
-                  <div style={{
-                    width: 'min(24svh, 180px)',
-                    height: 'min(24svh, 180px)',
-                    borderRadius: '50%',
-                    background: avatarColor,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 'min(10svh, 72px)',
-                    fontWeight: 700,
-                    color: '#fff',
-                    opacity: 0.9,
-                  }}>
-                    {name.charAt(0)}
-                  </div>
+                <div className="avatar-fallback" style={{
+                  width: '100%', position: 'absolute', left: '50%',
+                  transform: 'translateX(-50%) translateZ(0)', bottom: '28%',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  backfaceVisibility: 'hidden',
+                }}>
+                  <svg width="min(20svh, 140px)" height="min(20svh, 140px)" viewBox="0 0 24 24"
+                    style={{ width: 'min(20svh, 140px)', height: 'min(20svh, 140px)', opacity: 0.35 }}>
+                    <circle cx="12" cy="8" r="4" fill="white" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="none" stroke="white" strokeWidth="1.5" />
+                  </svg>
                 </div>
               )}
               {(handle || status || contactText) && (
