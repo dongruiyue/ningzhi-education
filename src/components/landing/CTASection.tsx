@@ -19,10 +19,10 @@ export function CTASection() {
           不夸海口、不打包票、不制造焦虑。我们做真实的评估，给可执行的方案。
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/study-abroad" variant="secondary" size="lg">
+          <Button href="/study-abroad" size="lg" className="ring-1 ring-white/30">
             了解留学英语
           </Button>
-          <Button href="/about" variant="secondary" size="lg">
+          <Button href="/about" size="lg" className="bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">
             了解我们的故事
           </Button>
         </div>

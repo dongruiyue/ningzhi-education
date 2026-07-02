@@ -26,10 +26,10 @@ export function Hero() {
             在深圳，懂行的说实话的人
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Button href="/study-abroad" size="lg">
+            <Button href="/study-abroad" size="lg" className="ring-1 ring-white/30">
               了解留学英语
             </Button>
-            <Button href="/k12" variant="secondary" size="lg">
+            <Button href="/k12" size="lg" className="bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">
               了解校内提升
             </Button>
           </div>
