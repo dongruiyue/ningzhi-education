@@ -393,13 +393,15 @@
 
 .pc-details .pc-extra {
   margin-top: 0.5em;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   gap: 6px;
   justify-content: center;
 }
 
 .pc-details .pc-extra > * {
+  display: inline-block !important;
+  grid-area: auto !important;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 6px;

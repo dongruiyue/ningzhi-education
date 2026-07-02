@@ -10,7 +10,8 @@ const clamp = (v: number, min = 0, max = 100) => Math.min(Math.max(v, min), max)
 const round = (v: number, precision = 3) => parseFloat(v.toFixed(precision));
 
 export interface ProfileCardProps {
-  avatarUrl: string;
+  avatarUrl?: string;
+  avatarColor?: string;
   name: string;
   title: string;
   handle?: string;
@@ -32,7 +33,8 @@ export interface ProfileCardProps {
 }
 
 function ProfileCardComponent({
-  avatarUrl,
+  avatarUrl = '',
+  avatarColor = '#2563EB',
   iconUrl,
   grainUrl,
   innerGradient,
@@ -270,15 +272,48 @@ function ProfileCardComponent({
             <div className="pc-shine" />
             <div className="pc-glare" />
             <div className="pc-content pc-avatar-content">
-              <img
-                className="avatar"
-                src={avatarUrl}
-                alt={`${name || 'Teacher'} avatar`}
-                loading="lazy"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
+              {avatarUrl ? (
+                <img
+                  className="avatar"
+                  src={avatarUrl}
+                  alt={`${name || 'Teacher'} avatar`}
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                />
+              ) : (
+                <div
+                  className="avatar-fallback"
+                  style={{
+                    width: '100%',
+                    position: 'absolute',
+                    left: '50%',
+                    transform: 'translateX(-50%) translateZ(0)',
+                    bottom: '25%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backfaceVisibility: 'hidden',
+                  }}
+                >
+                  <div style={{
+                    width: 'min(24svh, 180px)',
+                    height: 'min(24svh, 180px)',
+                    borderRadius: '50%',
+                    background: avatarColor,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 'min(10svh, 72px)',
+                    fontWeight: 700,
+                    color: '#fff',
+                    opacity: 0.9,
+                  }}>
+                    {name.charAt(0)}
+                  </div>
+                </div>
+              )}
               {(handle || status || contactText) && (
                 <div className="pc-user-info">
                   <div className="pc-user-details">
