@@ -68,13 +68,13 @@ export default function MethodologyPage() {
         </div>
 
         {/* 中国考生痛点 */}
-        <div className="bg-red-50 border border-red-100 rounded-2xl p-6 space-y-3">
-          <h3 className="font-bold text-red-900">中国考生核心痛点</h3>
-          <ul className="space-y-2 text-sm text-red-800">
-            <li>• 输入强、输出弱：听力 5.9 / 阅读 5.9 vs 口语 5.5 / 写作 5.7</li>
-            <li>• 写作同比微降 0.1 分（自 2018-19 年以来提升最明显的科目之一）</li>
-            <li>• 口语为全球主要考生来源国中最低之一</li>
-            <li>• 7 分以上占比降至 14%（近年呈小幅下降趋势）</li>
+        <div className="border-l-2 border-neutral-300 pl-6 space-y-3">
+          <h3 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide">中国考生核心痛点</h3>
+          <ul className="space-y-2.5 text-base text-neutral-700 leading-relaxed">
+            <li>输入强、输出弱：听力 5.9 / 阅读 5.9 vs 口语 5.5 / 写作 5.7</li>
+            <li>写作同比微降 0.1 分（自 2018-19 年以来提升最明显的科目之一）</li>
+            <li>口语为全球主要考生来源国中最低之一</li>
+            <li>7 分以上占比降至 14%（近年呈小幅下降趋势）</li>
           </ul>
         </div>
       </section>
@@ -193,7 +193,7 @@ export default function MethodologyPage() {
 
         <div className="bg-neutral-50 rounded-2xl p-6 sm:p-8 space-y-4">
           <h3 className="text-lg font-bold text-neutral-900">Task 2 四段式标准结构</h3>
-          <pre className="text-xs sm:text-sm text-neutral-600 font-mono leading-relaxed whitespace-pre-wrap">
+          <pre className="text-sm sm:text-base text-neutral-600 font-mono leading-relaxed whitespace-pre-wrap">
 {`引言段 (Introduction)
 ├── 背景句：引出话题
 ├── 转述题目：用自己的话重述问题
@@ -380,10 +380,11 @@ export default function MethodologyPage() {
           </table>
         </div>
 
-        <div className="bg-brand/5 border border-brand/20 rounded-2xl p-6 space-y-2">
-          <p className="font-semibold text-brand">📢 2026 年重要变化</p>
-          <p className="text-sm text-neutral-600 leading-relaxed">
-            2026 年雅思分阶段取消纸笔考试：UKVI 纸笔考 7 月 1 日终止，普通雅思纸笔考 9 月 1 日终止。部分城市保留机考+纸笔写作混合模式。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能。写作需练习打字速度（建议达到 40-50 wpm）。
+        <hr className="border-neutral-200" />
+        <div className="space-y-2">
+          <p className="text-sm font-semibold text-neutral-900">2026 年雅思考试重要变化</p>
+          <p className="text-sm text-neutral-500 leading-relaxed">
+            UKVI 纸笔考试 7 月 1 日终止，普通雅思纸笔考试 9 月 1 日终止。部分城市保留机考+纸笔写作混合模式。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能，写作建议练习打字速度至 40-50 wpm。
           </p>
         </div>
       </section>
