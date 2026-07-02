@@ -88,7 +88,7 @@ const CASES: CaseItem[] = [
     afterVal: "140（优秀）",
     duration: "12 个月",
     story:
-      "从 UNlock Basic 起步，经 UNlock L1 + Reading Explorer L1 系统学习，KET 总分 140，校内英语稳居班级前列。家长反馈：最大变化是孩子敢开口了，会主动读英文绘本。",
+      "从 Unlock Basic 起步，经 Unlock L1 + Reading Explorer L1 系统学习，KET 总分 140，校内英语稳居班级前列。家长反馈：最大变化是孩子敢开口了，会主动读英文绘本。",
     highlight: "校内英语从「中游」到「班级前列」",
   },
   {
@@ -101,7 +101,7 @@ const CASES: CaseItem[] = [
     afterVal: "A 档",
     duration: "6 个月",
     story:
-      "主要问题在写作和语法。采用 UNlock L1（综合）+ Great Writing L1（写作专项）组合方案，写作从「写不出三句话」到「能写 150 词短文」，校内成绩从 C 档跃升至 A 档。",
+      "主要问题在写作和语法。采用 Unlock L1（综合）+ Great Writing L1（写作专项）组合方案，写作从「写不出三句话」到「能写 150 词短文」，校内成绩从 C 档跃升至 A 档。",
     highlight: "写作从 3 句话到 150 词短文",
   },
   {

@@ -3,8 +3,8 @@ import { CaseCard } from "@/components/manual/CaseCard";
 import { ComparisonTable } from "@/components/manual/ComparisonTable";
 
 const TEXTBOOK_DATA = [
-  { name: "PowerUp", publisher: "剑桥大学出版社", focus: "少儿英语启蒙，听说读写综合", level: "入门-初级", exam: "Pre A1 / A1" },
-  { name: "UNlock", publisher: "剑桥大学出版社（英式）", focus: "批判性思维+学术英语", level: "初级-中级", exam: "KET / PET" },
+  { name: "Power Up", publisher: "Cambridge University Press & Assessment", focus: "少儿英语启蒙，听说读写综合", level: "入门-初级", exam: "Pre A1 / A1" },
+  { name: "Unlock", publisher: "Cambridge University Press & Assessment", focus: "批判性思维+学术英语", level: "初级-中级", exam: "KET / PET" },
   { name: "Pathways", publisher: "National Geographic（美式）", focus: "学术英语+全球视野", level: "中级-中高级", exam: "PET / FCE" },
   { name: "Reading Explorer", publisher: "National Geographic", focus: "阅读理解+词汇积累", level: "初级-中高级", exam: "全阶段适用" },
   { name: "Great Writing", publisher: "National Geographic", focus: "写作专项，句子→段落→文章", level: "初级-中高级", exam: "全阶段适用" },
@@ -26,7 +26,7 @@ export function K12Print() {
         <p>宁致教育坚持小而精的办学路线。我们相信每个孩子的英语学习路径都应该是独特的——不模板化、不流水线，用五套国际教材的组合能力，为每个孩子定制最合适的成长路径。</p>
         <h3>我们的优势</h3>
         <ul>
-          <li>多教材体系：UNlock / Pathways / PowerUp / Reading Explorer / Great Writing 五大国际教材</li>
+          <li>多教材体系：《Unlock》《Pathways》《Power Up》《Reading Explorer》《Great Writing》五大国际教材</li>
           <li>严抓督学：课后跟踪不放松，每日打卡确保效果</li>
           <li>全周期陪伴：从6岁到15岁</li>
         </ul>
@@ -53,9 +53,9 @@ export function K12Print() {
             { key: "main", header: "主教材" },
           ]}
           data={[
-            { age: "6-8岁", main: "PowerUp + Reading Explorer Foundation" },
-            { age: "8-10岁", main: "UNlock Basic + Reading Explorer L1" },
-            { age: "10-12岁", main: "UNlock L1-L2 + Great Writing L1" },
+            { age: "6-8岁", main: "Power Up + Reading Explorer Foundation" },
+            { age: "8-10岁", main: "Unlock Basic + Reading Explorer L1" },
+            { age: "10-12岁", main: "Unlock L1-L2 + Great Writing L1" },
             { age: "12-15岁", main: "Pathways L1-L2 + RE L2+ / GW L2+" },
           ]}
         />
@@ -67,10 +67,10 @@ export function K12Print() {
             { key: "combo", header: "推荐组合" },
           ]}
           data={[
-            { goal: "备考KET", combo: "PowerUp → UNlock L1 + Reading Explorer L1" },
-            { goal: "备考PET", combo: "UNlock L2 → Pathways L1 + Great Writing L1" },
-            { goal: "校内提分", combo: "UNlock + Great Writing" },
-            { goal: "综合素养", combo: "Reading Explorer + UNlock/Pathways" },
+            { goal: "备考KET", combo: "Power Up → Unlock L1 + Reading Explorer L1" },
+            { goal: "备考PET", combo: "Unlock L2 → Pathways L1 + Great Writing L1" },
+            { goal: "校内提分", combo: "Unlock + Great Writing" },
+            { goal: "综合素养", combo: "Reading Explorer + Unlock / Pathways" },
           ]}
         />
       </ChapterSection>
@@ -114,8 +114,8 @@ export function K12Print() {
       <div className="page-break" />
 
       <ChapterSection title="第五章 学生案例">
-        <CaseCard name="Amy" before="基础一般" after="KET 140（优秀）" duration="12个月" story="从PowerUp到UNlock，搭配Reading Explorer。最大的变化是孩子敢开口了。" />
-        <CaseCard name="小杰" before="校内C档" after="校内A档" duration="6个月" story="UNlock综合提升 + Great Writing写作专项，从写不出三句话到能写150词短文。" />
+        <CaseCard name="Amy" before="基础一般" after="KET 140（优秀）" duration="12个月" story="从 Power Up 到 Unlock，搭配 Reading Explorer。最大的变化是孩子敢开口了。" />
+        <CaseCard name="小杰" before="校内C档" after="校内A档" duration="6个月" story="Unlock 综合提升 + Great Writing 写作专项，从写不出三句话到能写 150 词短文。" />
         <CaseCard name="Sophia" before="KET水平" after="PET 154（通过）" duration="8个月" story="Pathways + Reading Explorer + Great Writing组合，阅读速度翻倍。" />
       </ChapterSection>
 

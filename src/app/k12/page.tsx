@@ -8,35 +8,35 @@ import { ComparisonTable } from "@/components/manual/ComparisonTable";
 export const metadata: Metadata = {
   title: "校内提升 / 能力素养",
   description:
-    "宁致教育校内提升（6-15岁），UNlock/Pathways/PowerUp/Reading Explorer/Great Writing五大国际教材，KET/PET/校内考试全覆盖，能力+分数双提升。",
+    "宁致教育校内提升（6-15岁），《Unlock》《Pathways》《Power Up》《Reading Explorer》《Great Writing》五大国际教材，KET/PET/校内考试全覆盖，能力+分数双提升。",
 };
 
 const TEXTBOOK_DATA = [
-  { name: "PowerUp", publisher: "剑桥大学出版社", focus: "少儿英语启蒙，听说读写综合", level: "入门-初级", exam: "Pre A1 / A1" },
-  { name: "UNlock", publisher: "剑桥大学出版社（英式）", focus: "批判性思维+学术英语", level: "初级-中级", exam: "KET / PET" },
+  { name: "Power Up", publisher: "Cambridge University Press & Assessment", focus: "少儿英语启蒙，听说读写综合", level: "入门-初级", exam: "Pre A1 / A1" },
+  { name: "Unlock", publisher: "Cambridge University Press & Assessment", focus: "批判性思维+学术英语", level: "初级-中级", exam: "KET / PET" },
   { name: "Pathways", publisher: "National Geographic（美式）", focus: "学术英语+全球视野", level: "中级-中高级", exam: "PET / FCE" },
   { name: "Reading Explorer", publisher: "National Geographic", focus: "阅读理解+词汇积累，非虚构类", level: "初级-中高级", exam: "全阶段适用" },
   { name: "Great Writing", publisher: "National Geographic", focus: "写作专项，句子→段落→文章", level: "初级-中高级", exam: "全阶段适用" },
 ];
 
 const AGE_MATRIX = [
-  { age: "6-8岁", main: "PowerUp", supplement: "Reading Explorer Foundation" },
-  { age: "8-10岁", main: "UNlock Basic", supplement: "Reading Explorer L1" },
-  { age: "10-12岁", main: "UNlock L1-L2", supplement: "Great Writing L1" },
+  { age: "6-8岁", main: "Power Up", supplement: "Reading Explorer Foundation" },
+  { age: "8-10岁", main: "Unlock Basic", supplement: "Reading Explorer L1" },
+  { age: "10-12岁", main: "Unlock L1-L2", supplement: "Great Writing L1" },
   { age: "12-15岁", main: "Pathways L1-L2", supplement: "Reading Explorer L2+ / Great Writing L2+" },
 ];
 
 const GOAL_MATRIX = [
-  { goal: "备考KET", combo: "PowerUp (后期) → UNlock L1 + Reading Explorer L1" },
-  { goal: "备考PET", combo: "UNlock L2 → Pathways L1 + Great Writing L1" },
-  { goal: "校内提分", combo: "UNlock (同步校内) + Great Writing (写作专项)" },
-  { goal: "综合素养提升", combo: "Reading Explorer (阅读) + UNlock 或 Pathways (听说写)" },
+  { goal: "备考KET", combo: "Power Up（后期）→ Unlock L1 + Reading Explorer L1" },
+  { goal: "备考PET", combo: "Unlock L2 → Pathways L1 + Great Writing L1" },
+  { goal: "校内提分", combo: "Unlock（同步校内）+ Great Writing（写作专项）" },
+  { goal: "综合素养提升", combo: "Reading Explorer（阅读）+ Unlock 或 Pathways（听说写）" },
 ];
 
 const LEVEL_MATRIX = [
-  { level: "零基础/刚接触", start: "PowerUp Starter" },
-  { level: "能简单对话", start: "UNlock Basic 或 PowerUp L3" },
-  { level: "能基本交流", start: "UNlock L1 或 Pathways Foundations" },
+  { level: "零基础/刚接触", start: "Power Up Starter" },
+  { level: "能简单对话", start: "Unlock Basic 或 Power Up L3" },
+  { level: "能基本交流", start: "Unlock L1 或 Pathways Foundations" },
   { level: "能流利交流", start: "Pathways L1+" },
 ];
 
@@ -55,7 +55,7 @@ export default function K12Page() {
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">我们的优势</h3>
         <ul>
-          <li><strong>多教材体系</strong>：UNlock / Pathways / PowerUp / Reading Explorer / Great Writing 五大国际教材，按需组合</li>
+          <li><strong>多教材体系</strong>：《Unlock》《Pathways》《Power Up》《Reading Explorer》《Great Writing》五大国际教材，按需组合</li>
           <li><strong>严抓督学</strong>：课后跟踪不放松，每日打卡确保学习效果</li>
           <li><strong>全周期陪伴</strong>：从6岁到15岁，一路陪伴孩子的英语成长</li>
           <li><strong>能力+分数双提升</strong>：既提升综合英语素养，也确保考试出分</li>
@@ -121,8 +121,8 @@ export default function K12Page() {
           <h3 className="text-lg font-semibold text-brand">全周期案例</h3>
           <p className="mt-2">
             小明，6岁入门：<br />
-            <strong>PowerUp</strong> L1-L3 (6-8岁) → <strong>UNlock</strong> Basic-L1 (8-10岁) →{" "}
-            <strong>Reading Explorer</strong> L1-L2 (同步) → <strong>Pathways</strong> L1 + <strong>Great Writing</strong> L1 (10-12岁) → 备考PET
+            <strong>Power Up</strong> L1-L3（6-8岁）→ <strong>Unlock</strong> Basic-L1（8-10岁）→{" "}
+            <strong>Reading Explorer</strong> L1-L2（同步）→ <strong>Pathways</strong> L1 + <strong>Great Writing</strong> L1（10-12岁）→ 备考 PET
           </p>
           <p className="mt-2 text-sm text-neutral-500">
             每个阶段的教材衔接都是平滑的，能力递进清晰可见
@@ -199,14 +199,14 @@ export default function K12Page() {
           before="基础一般"
           after="KET 140（优秀）"
           duration="12个月"
-          story="从PowerUp到UNlock，搭配Reading Explorer。最大的变化是孩子敢开口了，变得越来越自信，从'看到英语就躲'到'主动读英文绘本'。校内英语稳居前列。"
+          story="从 Power Up 到 Unlock，搭配 Reading Explorer。最大的变化是孩子敢开口了，变得越来越自信，从「看到英语就躲」到「主动读英文绘本」。校内英语稳居前列。"
         />
         <CaseCard
           name="小杰 — 校内从C到A"
           before="校内C档"
           after="校内A档"
           duration="6个月"
-          story="主要问题在写作和语法。UNlock综合提升 + Great Writing写作专项，从'写不出三句话'到'能写150词短文'。"
+          story="主要问题在写作和语法。Unlock 综合提升 + Great Writing 写作专项，从「写不出三句话」到「能写 150 词短文」。"
         />
         <CaseCard
           name="Sophia — PET通过，能力分数双赢"

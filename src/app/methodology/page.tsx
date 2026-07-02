@@ -23,7 +23,7 @@ export default function MethodologyPage() {
         </h1>
         <div className="space-y-2 text-neutral-500 text-base sm:text-lg leading-relaxed max-w-2xl">
           <p>
-            基于英国爱丁堡大学 TESOL 硕士学术训练 + 7 年新东方/学为贵/流利说一线教学沉淀
+            基于英国爱丁堡大学 TESOL 硕士学术训练 + 7 年一线教学沉淀
           </p>
           <p className="text-sm">
             教学总监雅思总分 <strong className="text-neutral-900">8.0</strong> |

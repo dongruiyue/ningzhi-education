@@ -21,7 +21,7 @@ export function AdultPrint() {
 
       <ChapterSection title="教学特色">
         <ul>
-          <li><strong>定制化教材</strong>：根据行业和需求选择 Interchange、流利说体系或其他教材</li>
+          <li><strong>定制化教材</strong>：根据行业和需求选择《Interchange》等教材或定制方案</li>
           <li><strong>场景化教学</strong>：跨境电商沟通、英文邮件写作、商务口语</li>
           <li><strong>灵活排课</strong>：适应成人工作节奏</li>
           <li><strong>雅思G类辅导</strong>：侧重生活场景英语和实用写作</li>

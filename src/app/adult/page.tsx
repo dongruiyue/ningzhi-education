@@ -29,7 +29,7 @@ export default function AdultPage() {
           <div className="bg-neutral-50 rounded-xl p-6">
             <h4 className="font-semibold text-brand">📋 定制化教材</h4>
             <p className="mt-2 text-sm text-neutral-600">
-              根据学员的具体行业和需求，选择 Interchange、流利说体系或其他教材，不搞一刀切。
+              根据学员的具体行业和需求，选择《Interchange》等教材或定制方案，不搞一刀切。
             </p>
           </div>
           <div className="bg-neutral-50 rounded-xl p-6">
