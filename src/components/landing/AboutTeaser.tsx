@@ -2,8 +2,15 @@ import Link from "next/link";
 
 export function AboutTeaser() {
   return (
-    <section className="py-20 sm:py-28 bg-neutral-50">
-      <div className="max-w-3xl mx-auto px-6 text-center space-y-8">
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      {/* Subtle photo background with light overlay for dark text */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/section-bg.jpg)" }}
+      />
+      <div className="absolute inset-0 bg-white/90" />
+
+      <div className="relative max-w-3xl mx-auto px-6 text-center space-y-8">
         <p className="text-brand font-semibold text-sm tracking-wide uppercase">
           关于宁致教育
         </p>
@@ -12,7 +19,7 @@ export function AboutTeaser() {
           <br className="hidden sm:block" />
           让我们决定做一间"不一样"的机构
         </h2>
-        <p className="text-neutral-500 leading-relaxed max-w-xl mx-auto text-base sm:text-lg">
+        <p className="text-neutral-600 leading-relaxed max-w-xl mx-auto text-base sm:text-lg">
           我们见过机构和顾问收了钱就消失，见过老师成了替罪羊。
           宁致选择了另一条路：敢跟家长说"课先少上点"，不以课时消耗定价，以目标达成为准。
         </p>

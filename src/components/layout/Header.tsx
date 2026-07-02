@@ -13,10 +13,10 @@ export function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-neutral-900 hover:text-brand transition-colors"
+          className="text-lg font-bold tracking-tight text-white hover:text-white/80 transition-colors"
         >
           {BRAND.name}
-          <span className="ml-2 text-xs font-normal text-neutral-400 hidden sm:inline">
+          <span className="ml-2 text-xs font-normal text-white/40 hidden sm:inline">
             {BRAND.tagline}
           </span>
         </Link>
@@ -27,14 +27,14 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-neutral-600 hover:text-brand transition-colors"
+              className="text-sm font-medium text-white/60 hover:text-white transition-colors"
             >
               {item.label}
             </Link>
           ))}
           <a
             href={`tel:${BRAND.contact.phone}`}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-dark transition-colors"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-light transition-colors"
           >
             预约试听
           </a>
@@ -42,7 +42,7 @@ export function Header() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-neutral-600"
+          className="md:hidden p-2 text-white/60"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -58,12 +58,12 @@ export function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-neutral-100 bg-white px-6 py-4 flex flex-col gap-3">
+        <nav className="md:hidden border-t border-white/10 bg-neutral-900 px-6 py-4 flex flex-col gap-3">
           {NAVIGATION.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-neutral-600 hover:text-brand transition-colors"
+              className="text-sm font-medium text-white/60 hover:text-white transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {item.label}
@@ -71,7 +71,7 @@ export function Header() {
           ))}
           <a
             href={`tel:${BRAND.contact.phone}`}
-            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-dark transition-colors"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-light transition-colors"
           >
             预约试听
           </a>

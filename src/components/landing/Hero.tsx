@@ -3,17 +3,24 @@ import { BRAND } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Dot-grid background — DNA: background_effects.type = "dot-grid" */}
-      <div className="absolute inset-0 dot-grid-bg" />
+    <section className="relative overflow-hidden bg-black">
+      {/* Full-bleed photo + dark gradient scrim */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6 py-28 md:py-40">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-white">
             {BRAND.tagline}
-            <span className="block text-brand mt-4">{BRAND.productTagline}</span>
+            <span className="block text-white/60 mt-4 text-3xl md:text-4xl lg:text-5xl font-light">
+              {BRAND.productTagline}
+            </span>
           </h1>
-          <p className="mt-8 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-xl">
+          <p className="mt-8 text-lg md:text-xl text-white/60 leading-relaxed max-w-xl">
             真经教学体系 &middot; 严抓督学 &middot; 真实出分
             <br />
             在深圳，懂行的说实话的人
@@ -36,8 +43,8 @@ export function Hero() {
               { label: "深圳本地", value: "100%" },
             ].map((stat) => (
               <div key={stat.label}>
-                <div className="text-3xl font-bold text-neutral-900">{stat.value}</div>
-                <div className="mt-1 text-sm text-neutral-400">{stat.label}</div>
+                <div className="text-3xl font-bold text-white">{stat.value}</div>
+                <div className="mt-1 text-sm text-white/40">{stat.label}</div>
               </div>
             ))}
           </div>
