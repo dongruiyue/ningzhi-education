@@ -89,7 +89,7 @@ export default function StudyAbroadPage() {
 
         <div className="grid sm:grid-cols-2 gap-6 mt-6">
           {[
-            { icon: "🎧", title: "听力 · 信号词定位法", items: ["6大必考信号词体系", "分Section策略训练", "口音适应（非英美口音40-45%）"] },
+            { icon: "🎧", title: "听力 · 信号词定位法", items: ["6大必考信号词体系", "分Section策略训练", "多口音适应训练（英美澳新等）"] },
             { icon: "📖", title: "阅读 · 结构化速读法", items: ["平行阅读法（一次读完不回头）", "7类题型分类击破", "意群阅读 + 长难句拆解"] },
             { icon: "✍️", title: "写作 · 逻辑框架搭建", items: ["四段式标准结构", "5大论证方法", "逻辑谬误诊断与修正"] },
             { icon: "🗣️", title: "口语 · 话题迁移策略", items: ["3-5个核心素材覆盖100+话题", "Part 1-3 分层策略", "流利度训练三法"] },

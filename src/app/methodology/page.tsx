@@ -71,10 +71,10 @@ export default function MethodologyPage() {
         <div className="bg-red-50 border border-red-100 rounded-2xl p-6 space-y-3">
           <h3 className="font-bold text-red-900">中国考生核心痛点</h3>
           <ul className="space-y-2 text-sm text-red-800">
-            <li>• 输入强、输出弱：听力 6.2 / 阅读 6.2 vs 口语 5.5 / 写作 5.7</li>
-            <li>• 写作是唯一倒退科目，同比降 0.1 分</li>
-            <li>• 口语全球倒数第二，仅高于日本</li>
-            <li>• 7 分以上占比三年连降：19% → 16% → 14%</li>
+            <li>• 输入强、输出弱：听力 5.9 / 阅读 5.9 vs 口语 5.5 / 写作 5.7</li>
+            <li>• 写作同比微降 0.1 分（自 2018-19 年以来提升最明显的科目之一）</li>
+            <li>• 口语为全球主要考生来源国中最低之一</li>
+            <li>• 7 分以上占比降至 14%（近年呈小幅下降趋势）</li>
           </ul>
         </div>
       </section>
@@ -163,7 +163,7 @@ export default function MethodologyPage() {
               {[
                 ["判断题 (TFNG)", "⭐⭐⭐⭐", "区分 False（矛盾）和 Not Given（无依据）"],
                 ["标题配对", "⭐⭐⭐⭐", "读段落首尾句 + 转折词后，总结主旨"],
-                ["信息匹配", "⭐⭐⭐⭐⭐", "匹配题占比上涨9%，需理解段落功能"],
+                ["信息匹配", "⭐⭐⭐⭐⭐", "匹配题占比上涨约 7 个百分点，已超越判断题成为第二大题型"],
                 ["摘要填空", "⭐⭐⭐", "定位 + 词性预判 + 同义替换"],
               ].map(([type, diff, strategy]) => (
                 <tr key={type} className="border-b border-neutral-100">
@@ -188,7 +188,7 @@ export default function MethodologyPage() {
           <strong className="text-neutral-900">
             写作不是炫词汇，是逻辑清晰 + 论证充分。
           </strong>{" "}
-          中国考生写作均分仅 5.7，且是唯一倒退科目。大多数考生卡在 5.5-6.0 的原因是：逻辑链断裂 + 论证空洞。
+          中国考生写作均分仅 5.7。大多数考生卡在 5.5-6.0 的原因是：逻辑链断裂 + 论证空洞。
         </p>
 
         <div className="bg-neutral-50 rounded-2xl p-6 sm:p-8 space-y-4">
@@ -383,7 +383,7 @@ export default function MethodologyPage() {
         <div className="bg-brand/5 border border-brand/20 rounded-2xl p-6 space-y-2">
           <p className="font-semibold text-brand">📢 2026 年重要变化</p>
           <p className="text-sm text-neutral-600 leading-relaxed">
-            2026 年中雅思全面取消纸笔考试。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能。写作需练习打字速度（建议达到 40-50 wpm）。
+            2026 年雅思分阶段取消纸笔考试：UKVI 纸笔考 7 月 1 日终止，普通雅思纸笔考 9 月 1 日终止。部分城市保留机考+纸笔写作混合模式。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能。写作需练习打字速度（建议达到 40-50 wpm）。
           </p>
         </div>
       </section>
@@ -424,10 +424,10 @@ export default function MethodologyPage() {
             </thead>
             <tbody className="text-neutral-600">
               {[
-                ["听力", "6.2", "最强单项，稳定"],
-                ["阅读", "6.2", "与听力并列最强，同比下降"],
-                ["写作", "5.7", "⚠️ 唯一倒退科目，同比降 0.1"],
-                ["口语", "5.5", "⚠️ 最大短板，全球倒数第二"],
+                ["听力", "5.9", "与阅读接近，稳定"],
+                ["阅读", "5.9", "与听力接近，同比下降"],
+                ["写作", "5.7", "同比微降 0.1（自 2018-19 年提升明显）"],
+                ["口语", "5.5", "⚠️ 最大短板，主要考生来源国中最低之一"],
               ].map(([subject, score, trend]) => (
                 <tr key={subject} className="border-b border-neutral-100">
                   <td className="py-3 pr-4 font-medium text-neutral-900">{subject}</td>
