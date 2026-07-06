@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PRODUCT_LINES } from "@/lib/constants";
+import { PageNotes } from "@/components/ui/PageNotes";
 
 export function ProductLines() {
   return (
@@ -24,7 +25,7 @@ export function ProductLines() {
                 <h3 className="text-xl font-bold text-neutral-900 group-hover:text-brand transition-colors">
                   {line.title}
                 </h3>
-                <p className="text-sm text-brand mt-1">{line.subtitle}</p>
+                <p className="text-sm text-brand mt-1" dangerouslySetInnerHTML={{ __html: line.subtitle }} />
                 <p className="mt-4 text-sm text-neutral-600 leading-relaxed flex-1">
                   <span dangerouslySetInnerHTML={{ __html: line.description }} />
                 </p>
@@ -51,6 +52,19 @@ export function ProductLines() {
           ))}
         </div>
       </div>
+    
+      <PageNotes items={[
+    { num: 1, name: 'IELTS', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' },
+    { num: 2, name: 'KET', owner: 'Cambridge English Language Assessment' },
+    { num: 3, name: 'PET', owner: 'Cambridge English Language Assessment' },
+    { num: 4, name: 'Unlock', owner: 'Cambridge University Press' },
+    { num: 5, name: 'Pathways', owner: 'National Geographic Learning' },
+    { num: 6, name: 'Power Up', owner: 'Cambridge University Press' },
+    { num: 7, name: 'Reading Explorer', owner: 'National Geographic Learning' },
+    { num: 8, name: 'Great Writing', owner: 'National Geographic Learning' },
+    { num: 9, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' },
+      ]} />
     </section>
+            
   );
 }

@@ -54,8 +54,6 @@ export function Footer() {
           A-Level 及 IGCSE 为 Cambridge International Education 的注册商标。
           IB<sup>&reg;</sup> 为 International Baccalaureate Organization 的注册商标。
           DSE 为香港考试及评核局的注册商标。
-        </p>
-        <p>
           《Unlock》《Power Up》《Interchange》为 Cambridge University Press 出版的教材系列。
           《Pathways》《Reading Explorer》《Great Writing》为 National Geographic Learning 出版的教材系列。
           本网站中提及的所有商标、教材名称及机构名称均为其各自权利持有人的财产，仅用于教学参考和课程说明目的。
