@@ -5,7 +5,7 @@
 export const BRAND = {
   name: "宁致教育",
   nameEn: "Ningzhi Education",
-  tagline: "找个敢说真话的机构",
+  tagline: "找个说真话的机构",
   productTagline: "正规出分的最后一站",
   experienceTagline: "每一步都看见，才叫放心",
   description:
