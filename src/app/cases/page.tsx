@@ -127,7 +127,7 @@ function ScoreBar({ before, after, label }: { before: string; after: string; lab
     <div className="flex items-center gap-2 sm:gap-4">
       <div className="text-center">
         <p className="text-xs text-neutral-400 mb-0.5">学前</p>
-        <p className="text-xl sm:text-2xl font-bold text-neutral-400">{before}</p>
+        <p className="text-xl sm:text-2xl font-bold text-neutral-400 whitespace-nowrap">{before}</p>
       </div>
       <svg className="w-5 h-5 sm:w-6 sm:h-6 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -137,7 +137,7 @@ function ScoreBar({ before, after, label }: { before: string; after: string; lab
         <p className="text-xl sm:text-2xl font-bold text-brand whitespace-nowrap">{after}</p>
       </div>
       <span className="text-xs text-neutral-300 hidden sm:inline">|</span>
-      <span className="text-xs text-neutral-500 hidden sm:inline">{label}</span>
+      <span className="text-xs text-neutral-500 hidden sm:inline whitespace-nowrap">{label}</span>
     </div>
   );
 }
