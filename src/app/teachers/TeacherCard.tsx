@@ -70,7 +70,7 @@ export function TeacherCard({ name, title, handle, status, tags }: TeacherCardPr
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block px-2.5 py-0.5 text-xs rounded-md bg-white/8 text-white/80 border border-white/8"
+              className="inline-block px-2 py-px text-[11px] rounded-full bg-white/10 text-white/70"
             >
               {tag}
             </span>
