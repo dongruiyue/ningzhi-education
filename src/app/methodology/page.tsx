@@ -193,26 +193,39 @@ export default function MethodologyPage() {
 
         <div className="bg-neutral-50 rounded-2xl p-6 sm:p-8 space-y-4">
           <h3 className="text-lg font-bold text-neutral-900">Task 2 四段式标准结构</h3>
-          <pre className="text-sm sm:text-base text-neutral-600 font-mono leading-relaxed whitespace-pre-wrap">
-{`引言段 (Introduction)
-├── 背景句：引出话题
-├── 转述题目：用自己的话重述问题
-└── 立场句：明确表达自己的观点
-
-主体段 1 (Body 1)
-├── 主题句：段落核心论点
-├── 解释句：进一步阐述论点
-├── 例证句：具体例子支撑
-└── 小结句：回扣论点
-
-主体段 2 (Body 2)
-├── 主题句（同上结构）
-├── ...
-
-结论段 (Conclusion)
-├── 重申立场
-└── 总结核心论点（不引入新信息）`}
-          </pre>
+          <div className="space-y-5 text-sm sm:text-base text-neutral-700 leading-relaxed">
+            <div>
+              <div className="font-semibold text-neutral-900 mb-1">引言段 (Introduction)</div>
+              <div className="ml-4 space-y-0.5 text-neutral-600">
+                <div>· 背景句：引出话题</div>
+                <div>· 转述题目：用自己的话重述问题</div>
+                <div>· 立场句：明确表达自己的观点</div>
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-neutral-900 mb-1">主体段 1 (Body 1)</div>
+              <div className="ml-4 space-y-0.5 text-neutral-600">
+                <div>· 主题句：段落核心论点</div>
+                <div>· 解释句：进一步阐述论点</div>
+                <div>· 例证句：具体例子支撑</div>
+                <div>· 小结句：回扣论点</div>
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-neutral-900 mb-1">主体段 2 (Body 2)</div>
+              <div className="ml-4 space-y-0.5 text-neutral-600">
+                <div>· 主题句（同上结构）</div>
+                <div>· ...</div>
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-neutral-900 mb-1">结论段 (Conclusion)</div>
+              <div className="ml-4 space-y-0.5 text-neutral-600">
+                <div>· 重申立场</div>
+                <div>· 总结核心论点（不引入新信息）</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
