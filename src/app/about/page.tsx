@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { BRAND } from "@/lib/constants";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "关于宁致",
@@ -253,9 +252,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-      <PageNotes items={[
-    { num: 1, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' }
-      ]} />
 
     </div>
   );

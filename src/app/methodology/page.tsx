@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "雅思<sup>1</sup>教学方法论",
@@ -459,9 +458,6 @@ export default function MethodologyPage() {
           查看留学英语课程 →
         </Link>
       </section>
-      <PageNotes items={[
-    { num: 1, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' }
-      ]} />
 
     </div>
   );

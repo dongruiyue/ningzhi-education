@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "出分案例",
@@ -290,15 +289,6 @@ export default function CasesPage() {
           </Link>
         </div>
       </section>
-      <PageNotes items={[
-    { num: 1, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' },
-      { num: 2, name: 'KET', owner: 'Cambridge English Language Assessment' },
-      { num: 3, name: 'PET', owner: 'Cambridge English Language Assessment' },
-      { num: 4, name: 'Unlock', owner: 'Cambridge University Press' },
-      { num: 5, name: 'Reading Explorer', owner: 'National Geographic Learning' },
-      { num: 6, name: 'Great Writing', owner: 'National Geographic Learning' },
-      { num: 7, name: 'Pathways', owner: 'National Geographic Learning' }
-      ]} />
 
     </div>
   );

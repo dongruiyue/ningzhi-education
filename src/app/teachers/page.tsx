@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { TeacherGrid } from "./TeacherGrid";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "师资团队",
@@ -49,17 +48,6 @@ export default function TeachersPage() {
           预约试听 →
         </a>
       </section>
-      <PageNotes items={[
-    { num: 1, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' },
-      { num: 2, name: '托福', owner: 'Educational Testing Service (ETS)' },
-      { num: 3, name: 'GRE', owner: 'Educational Testing Service (ETS)' },
-      { num: 4, name: 'A-Level', owner: 'Cambridge International Education' },
-      { num: 5, name: 'AP', owner: 'College Board' },
-      { num: 6, name: 'AMC', owner: 'Mathematical Association of America' },
-      { num: 7, name: 'DSE', owner: '香港考试及评核局' },
-      { num: 8, name: 'SAT', owner: 'College Board' },
-      { num: 9, name: 'IB', owner: 'International Baccalaureate Organization' }
-      ]} />
 
     </div>
   );

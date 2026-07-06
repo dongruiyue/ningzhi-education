@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ManualLayout } from "@/components/manual/ManualLayout";
 import { ChapterSection } from "@/components/manual/ChapterSection";
 import { ComparisonTable } from "@/components/manual/ComparisonTable";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "成人英语",

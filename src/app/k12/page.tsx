@@ -4,7 +4,6 @@ import { ChapterSection } from "@/components/manual/ChapterSection";
 import { CaseCard } from "@/components/manual/CaseCard";
 import { FAQItem } from "@/components/manual/FAQItem";
 import { ComparisonTable } from "@/components/manual/ComparisonTable";
-import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "校内提升 / 能力素养",
