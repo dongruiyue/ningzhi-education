@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "出分案例",
   description:
-    "宁致教育真实学生出分案例——雅思从5.5到7.0，KET<sup>2</sup>/PET优秀通过。每一个分数均可查证，不做假不编造。",
+    "宁致教育真实学生出分案例——雅思从5.5到7.0，KET/PET优秀通过。每一个分数均可查证，不做假不编造。",
 };
 
 // ============================================
@@ -66,7 +66,7 @@ const CASES: CaseItem[] = [
   },
   {
     student: "L 同学",
-    tag: "备考雅思<sup>1</sup> · 听力阅读突破",
+    tag: "备考雅思 · 听力阅读突破",
     product: "留学英语",
     beforeLabel: "听力/阅读",
     afterLabel: "听力/阅读",
@@ -82,13 +82,13 @@ const CASES: CaseItem[] = [
     student: "Amy",
     tag: "9 岁 · 三年级",
     product: "校内提升",
-    beforeLabel: "KET<sup>2</sup> 目标",
-    afterLabel: "KET<sup>2</sup> 成绩",
+    beforeLabel: "KET 目标",
+    afterLabel: "KET 成绩",
     beforeVal: "基础一般",
     afterVal: "140（优秀）",
     duration: "12 个月",
     story:
-      "从 Unlock<sup>4</sup> Basic 起步，经 Unlock<sup>4</sup> L1 + Reading Explorer<sup>5</sup> L1 系统学习，KET<sup>2</sup> 总分 140，校内英语稳居班级前列。家长反馈：最大变化是孩子敢开口了，会主动读英文绘本。",
+      "从 Unlock Basic 起步，经 Unlock L1 + Reading Explorer L1 系统学习，KET 总分 140，校内英语稳居班级前列。家长反馈：最大变化是孩子敢开口了，会主动读英文绘本。",
     highlight: "校内英语从「中游」到「班级前列」",
   },
   {
@@ -101,20 +101,20 @@ const CASES: CaseItem[] = [
     afterVal: "A 档",
     duration: "6 个月",
     story:
-      "主要问题在写作和语法。采用 Unlock<sup>4</sup> L1（综合）+ Great Writing<sup>6</sup> L1（写作专项）组合方案，写作从「写不出三句话」到「能写 150 词短文」，校内成绩从 C 档跃升至 A 档。",
+      "主要问题在写作和语法。采用 Unlock L1（综合）+ Great Writing L1（写作专项）组合方案，写作从「写不出三句话」到「能写 150 词短文」，校内成绩从 C 档跃升至 A 档。",
     highlight: "写作从 3 句话到 150 词短文",
   },
   {
     student: "Sophia",
-    tag: "13 岁 · 已过 KET<sup>2</sup>",
+    tag: "13 岁 · 已过 KET",
     product: "校内提升",
-    beforeLabel: "PET<sup>3</sup> 目标",
-    afterLabel: "PET<sup>3</sup> 成绩",
+    beforeLabel: "PET 目标",
+    afterLabel: "PET 成绩",
     beforeVal: "阅读慢/写作弱",
     afterVal: "154（通过）",
     duration: "8 个月",
     story:
-      "已过 KET<sup>2</sup> 但阅读速度慢、写作逻辑弱。Pathways<sup>7</sup> L1 + Reading Explorer<sup>5</sup> L2 + Great Writing<sup>6</sup> L2 三套教材组合发力，阅读速度翻倍，写作从套模板到自主表达。",
+      "已过 KET 但阅读速度慢、写作逻辑弱。Pathways L1 + Reading Explorer L2 + Great Writing L2 三套教材组合发力，阅读速度翻倍，写作从套模板到自主表达。",
     highlight: "阅读速度翻倍 | 写作实现自主表达",
   },
 ];
@@ -238,7 +238,7 @@ export default function CasesPage() {
       </section>
 
       {/* ========================================
-          校内提升 · KET<sup>2</sup>/PET<sup>3</sup>/校内案例
+          校内提升 · KET/PET/校内案例
           ======================================== */}
       <section className="space-y-8">
         <div className="flex items-center gap-3">

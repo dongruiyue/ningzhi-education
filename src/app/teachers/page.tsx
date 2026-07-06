@@ -23,10 +23,10 @@ export default function TeachersPage() {
           不做包装，不编履历——我们认为，老师自己考出来的分数，比任何标签都有说服力。
         </p>
         <div className="flex flex-wrap gap-3 text-sm text-neutral-400">
-          <span className="bg-neutral-100 rounded-full px-4 py-2">英语 · 雅思<sup>1</sup>/托福<sup>2</sup>/GRE<sup>3</sup></span>
-          <span className="bg-neutral-100 rounded-full px-4 py-2">数学 · A-Level<sup>4</sup>/AP<sup>5</sup>/AMC<sup>6</sup></span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">英语 · 雅思/托福/GRE</span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">数学 · A-Level/AP/AMC</span>
           <span className="bg-neutral-100 rounded-full px-4 py-2">物理 · 生物 · 经济 · 地理</span>
-          <span className="bg-neutral-100 rounded-full px-4 py-2">DSE<sup>7</sup> · SAT<sup>8</sup> · IB<sup>9</sup></span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">DSE · SAT · IB</span>
         </div>
       </section>
 

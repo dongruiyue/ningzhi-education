@@ -75,7 +75,7 @@ export default function AboutPage() {
               我们不推长课包，不打大折扣——因为课时是手段不是商品，孩子达成目标就该结课。每个学生配助教一对一督学，每天跟进，每周反馈。这些是成本，但砍了就不是宁致了。
             </p>
             <p>
-              我们的老师跟学生一起走进雅思<sup>1</sup>考场——所有成绩真实可查。这些坚持让我们长得慢。但让每个家庭花的每一分钱，都花在真正的进步上。
+              我们的老师跟学生一起走进雅思考场——所有成绩真实可查。这些坚持让我们长得慢。但让每个家庭花的每一分钱，都花在真正的进步上。
             </p>
           </div>
         </div>
@@ -197,7 +197,7 @@ export default function AboutPage() {
             {[
               { label: "学历背景", value: "英国爱丁堡大学 TESOL 硕士" },
               { label: "教学经验", value: "7 年一线教学" },
-              { label: "雅思<sup>1</sup>总分", value: "8.0" },
+              { label: "雅思总分", value: "8.0" },
               { label: "听力 / 阅读", value: "双满分 9.0 × 2" },
               { label: "曾任教", value: "新东方 · 学为贵 · 流利说" },
               { label: "累计学员", value: "3,000+" },
@@ -212,7 +212,7 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-neutral-900 mb-3">雅思<sup>1</sup>方法论体系</h4>
+            <h4 className="font-semibold text-neutral-900 mb-3">雅思方法论体系</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm text-neutral-600">
               {[
                 "信号词定位法",

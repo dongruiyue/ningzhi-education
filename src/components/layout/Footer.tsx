@@ -57,7 +57,7 @@ export function Footer() {
           《Unlock》《Power Up》《Interchange》为 Cambridge University Press 出版的教材系列。
           《Pathways》《Reading Explorer》《Great Writing》为 National Geographic Learning 出版的教材系列。
           本网站中提及的所有商标、教材名称及机构名称均为其各自权利持有人的财产，仅用于教学参考和课程说明目的。
-          宁致教育与上述机构无隶属、赞助或 endorsement 关系。
+          宁致教育与上述机构无隶属、赞助关系。
         </p>
       </div>
 

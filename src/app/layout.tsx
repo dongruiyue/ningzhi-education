@@ -3,7 +3,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DesignModeToggle } from "@/components/ui/DesignModeToggle";
-import { PageNotesBar } from "@/components/ui/PageNotesBar";
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +34,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-white text-neutral-900">
         <Header />
         <main className="flex-1">{children}</main>
-        <PageNotesBar />
         <Footer />
         <DesignModeToggle />
       </body>

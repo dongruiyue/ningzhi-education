@@ -15,7 +15,7 @@ export default function StudyAbroadPage() {
   return (
     <ManualLayout
       title="留学英语"
-      subtitle="IELTS<sup>2</sup> Academic · 15岁以上 · 真经教学体系"
+      subtitle="IELTS Academic · 15岁以上 · 真经教学体系"
     >
       {/* Chapter 1: Why Ningzhi */}
       <ChapterSection title="第一章 为什么选择宁致教育">
@@ -211,7 +211,7 @@ export default function StudyAbroadPage() {
           before="6.0"
           after="7.0"
           duration="4个月"
-          story="Alex已考过两次雅思<sup>1</sup>，都卡在6.0。问题不是学不会，而是不知道哪里有问题。入学测试发现阅读方法效率低，写作缺乏逻辑框架。针对性调整后，四个月实现突破。"
+          story="Alex已考过两次雅思，都卡在6.0。问题不是学不会，而是不知道哪里有问题。入学测试发现阅读方法效率低，写作缺乏逻辑框架。针对性调整后，四个月实现突破。"
         />
         <CaseCard
           name="小陈 — 零基础到 5.5，一年蜕变"

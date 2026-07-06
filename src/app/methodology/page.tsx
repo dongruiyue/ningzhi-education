@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "雅思<sup>1</sup>教学方法论",
+  title: "雅思教学方法论",
   description:
     "宁致教育教学方法论——基于英国爱丁堡大学TESOL硕士学术训练与7年一线教学沉淀。信号词定位法、结构化速读法、逻辑框架搭建、话题迁移策略。",
 };
@@ -18,7 +18,7 @@ export default function MethodologyPage() {
           教学方法论
         </p>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 leading-tight">
-          雅思<sup>1</sup>备考的本质不是刷题，<br className="hidden sm:block" />
+          雅思备考的本质不是刷题，<br className="hidden sm:block" />
           是建立可复用的方法论体系
         </h1>
         <div className="space-y-2 text-neutral-500 text-base sm:text-lg leading-relaxed max-w-2xl">
@@ -26,7 +26,7 @@ export default function MethodologyPage() {
             基于英国爱丁堡大学 TESOL 硕士学术训练 + 7 年一线教学沉淀
           </p>
           <p className="text-sm">
-            教学总监雅思<sup>1</sup>总分 <strong className="text-neutral-900">8.0</strong> |
+            教学总监雅思总分 <strong className="text-neutral-900">8.0</strong> |
             听力 <strong className="text-neutral-900">9.0</strong> |
             阅读 <strong className="text-neutral-900">9.0</strong> |
             写作 7.5 | 口语 7.5
@@ -45,7 +45,7 @@ export default function MethodologyPage() {
           {[
             {
               title: "不教套路，教方法",
-              desc: "雅思<sup>1</sup>出题逻辑是稳定的，押题不可靠。掌握底层方法论才能以不变应万变。",
+              desc: "雅思出题逻辑是稳定的，押题不可靠。掌握底层方法论才能以不变应万变。",
             },
             {
               title: "输入输出双轨制",
@@ -87,7 +87,7 @@ export default function MethodologyPage() {
           听力 · 信号词定位法
         </h2>
         <p className="text-neutral-600 leading-relaxed">
-          雅思<sup>1</sup>听力的答案<strong className="text-neutral-900">永远藏在信号词后面</strong>。听力考试本质上是一场"定向搜索"——你不需要听懂每一个词，而是需要识别哪些词在引导答案出现。
+          雅思听力的答案<strong className="text-neutral-900">永远藏在信号词后面</strong>。听力考试本质上是一场"定向搜索"——你不需要听懂每一个词，而是需要识别哪些词在引导答案出现。
         </p>
 
         <div className="overflow-x-auto">
@@ -305,7 +305,7 @@ export default function MethodologyPage() {
         </h2>
         <p className="text-neutral-600 leading-relaxed">
           <strong className="text-neutral-900">扔掉按字母背单词的方法。</strong>{" "}
-          雅思<sup>1</sup>考查的不是词汇量绝对值，而是"在正确场景下用对词"的能力。
+          雅思考查的不是词汇量绝对值，而是"在正确场景下用对词"的能力。
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -329,7 +329,7 @@ export default function MethodologyPage() {
           语法 · 7 分必备结构
         </h3>
         <p className="text-neutral-600 leading-relaxed">
-          雅思<sup>1</sup>写作 6 分到 7 分的分水岭是<strong className="text-neutral-900">语法多样性</strong>。不需要学所有语法，只学写作能直接用的核心结构。
+          雅思写作 6 分到 7 分的分水岭是<strong className="text-neutral-900">语法多样性</strong>。不需要学所有语法，只学写作能直接用的核心结构。
         </p>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
@@ -382,9 +382,9 @@ export default function MethodologyPage() {
 
         <hr className="border-neutral-200" />
         <div className="space-y-2">
-          <p className="text-sm font-semibold text-neutral-900">2026 年雅思<sup>1</sup>考试重要变化</p>
+          <p className="text-sm font-semibold text-neutral-900">2026 年雅思考试重要变化</p>
           <p className="text-sm text-neutral-500 leading-relaxed">
-            UKVI 纸笔考试 7 月 1 日终止，普通雅思<sup>1</sup>纸笔考试 9 月 1 日终止。部分城市保留机考+纸笔写作混合模式。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能，写作建议练习打字速度至 40-50 wpm。
+            UKVI 纸笔考试 7 月 1 日终止，普通雅思纸笔考试 9 月 1 日终止。部分城市保留机考+纸笔写作混合模式。需提前适应屏幕阅读、盲打数字/日期、屏幕标注等功能，写作建议练习打字速度至 40-50 wpm。
           </p>
         </div>
       </section>
@@ -397,7 +397,7 @@ export default function MethodologyPage() {
           数据背景：中国考生现状
         </h2>
         <p className="text-sm text-neutral-400">
-          数据来源：British Council《2024-2025 中国大陆地区雅思<sup>1</sup>考生成绩大数据报告》
+          数据来源：British Council《2024-2025 中国大陆地区雅思考生成绩大数据报告》
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

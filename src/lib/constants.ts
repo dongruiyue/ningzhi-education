@@ -34,7 +34,7 @@ export const PRODUCT_LINES = [
   {
     id: "study-abroad",
     title: "留学英语",
-    subtitle: "IELTS<sup>1</sup> Academic · 正规出分的最后一站",
+    subtitle: "IELTS Academic · 正规出分的最后一站",
     ageRange: "15+",
     description:
       "真经教学体系 + 方法论驱动 + 助教一对一督学。不教套路教方法，不堆课时看结果。",
@@ -44,17 +44,17 @@ export const PRODUCT_LINES = [
   {
     id: "k12",
     title: "校内提升",
-    subtitle: "KET<sup>2</sup> · PET<sup>3</sup> · 校内同步",
+    subtitle: "KET · PET · 校内同步",
     ageRange: "6–15",
     description:
-      "Unlock<sup>4</sup> / Pathways<sup>5</sup> / Power Up<sup>6</sup> / Reading Explorer<sup>7</sup> / Great Writing<sup>8</sup> 五大教材按需组合，能力+分数双提升。",
-    features: ["五套国际教材矩阵", "KET<sup>2</sup>/PET<sup>3</sup>/校内全覆盖", "量体裁衣式排课", "每日跟进反馈"],
+      "Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大教材按需组合，能力+分数双提升。",
+    features: ["五套国际教材矩阵", "KET/PET/校内全覆盖", "量体裁衣式排课", "每日跟进反馈"],
     href: "/k12",
   },
   {
     id: "adult",
     title: "成人英语",
-    subtitle: "IELTS<sup>1</sup> General · 职场实用",
+    subtitle: "IELTS General · 职场实用",
     ageRange: "18+",
     description:
       "面向跨境/外贸/职场人群。定制方案，灵活排课。不推长课包，目标达成即结课。",
