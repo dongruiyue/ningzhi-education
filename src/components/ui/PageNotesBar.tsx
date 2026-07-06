@@ -71,7 +71,7 @@ export function PageNotesBar() {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="border-t border-neutral-200 bg-neutral-50">
+    <div className="bg-neutral-900">
       <div className="max-w-7xl mx-auto px-6 py-6 text-xs text-neutral-400 leading-relaxed space-y-1">
         {items.map(({ num, name, owner }) => (
           <p key={num}>
