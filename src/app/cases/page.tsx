@@ -134,7 +134,7 @@ function ScoreBar({ before, after, label }: { before: string; after: string; lab
       </svg>
       <div className="text-center">
         <p className="text-xs text-brand font-medium mb-0.5">学后</p>
-        <p className="text-xl sm:text-2xl font-bold text-brand">{after}</p>
+        <p className="text-xl sm:text-2xl font-bold text-brand whitespace-nowrap">{after}</p>
       </div>
       <span className="text-xs text-neutral-300 hidden sm:inline">|</span>
       <span className="text-xs text-neutral-500 hidden sm:inline">{label}</span>
@@ -159,12 +159,12 @@ function CaseCard({ item }: { item: CaseItem }) {
       {/* Score comparison */}
       <ScoreBar before={item.beforeVal} after={item.afterVal} label={item.beforeLabel} />
 
-      {/* Highlight badge */},
+      {/* Highlight badge */}
       {item.highlight && (
         <p className="text-sm font-medium text-brand bg-brand/5 rounded-lg px-4 py-2 inline-block">
           {item.highlight}
         </p>
-      )},
+      )}
       {/* Story */}
       <p className="text-sm text-neutral-600 leading-relaxed">{item.story}</p>
     </article>
