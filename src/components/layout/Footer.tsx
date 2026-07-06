@@ -47,7 +47,7 @@ export function Footer() {
 
       <div className="border-t border-neutral-800 px-6 py-8 space-y-3 text-xs text-neutral-500 leading-relaxed">
         <p>
-          IELTS<sup>&reg;</sup>¹、TOEFL<sup>&reg;</sup>²、GRE<sup>&reg;</sup>³、SAT<sup>&reg;</sup>⁴、AP<sup>&reg;</sup>⁵、KET/PET/FCE⁶、A-Level/IGCSE⁷、IB<sup>&reg;</sup>⁸、DSE⁹、Unlock/Power Up/Interchange¹⁰、Pathways/Reading Explorer/Great Writing¹¹
+          IELTS<sup>&reg;</sup>¹、TOEFL<sup>&reg;</sup>²、GRE<sup>&reg;</sup>³、SAT<sup>&reg;</sup>⁴、AP<sup>&reg;</sup>⁵、KET/PET/FCE⁶、A-Level/IGCSE⁷、IB<sup>&reg;</sup>⁸、DSE⁹、Unlock/Power Up/Interchange<sup>10</sup>、Pathways/Reading Explorer/Great Writing<sup>11</sup>
         </p>
         <p className="text-neutral-600 mt-1">
           均为各自权利持有人的财产，仅用于教学参考和课程说明目的。宁致教育与上述机构无隶属、赞助或 endorsement 关系。
@@ -62,8 +62,8 @@ export function Footer() {
           <p>⁷ A-Level、IGCSE — Cambridge International Education</p>
           <p>⁸ IB — International Baccalaureate Organization</p>
           <p>⁹ DSE — 香港考试及评核局</p>
-          <p>¹⁰ 《Unlock》《Power Up》《Interchange》— Cambridge University Press</p>
-          <p>¹¹ 《Pathways》《Reading Explorer》《Great Writing》— National Geographic Learning</p>
+          <p><sup>10</sup> 《Unlock》《Power Up》《Interchange》— Cambridge University Press</p>
+          <p><sup>11</sup> 《Pathways》《Reading Explorer》《Great Writing》— National Geographic Learning</p>
         </div>
       </div>
 

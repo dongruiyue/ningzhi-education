@@ -47,7 +47,7 @@ export const PRODUCT_LINES = [
     subtitle: "KET · PET · 校内同步",
     ageRange: "6–15",
     description:
-      "Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大教材按需组合，能力+分数双提升。",
+      "Unlock<sup>10</sup> / Pathways<sup>11</sup> / Power Up<sup>10</sup> / Reading Explorer<sup>11</sup> / Great Writing<sup>11</sup> 五大教材按需组合，能力+分数双提升。",
     features: ["五套国际教材矩阵", "KET/PET/校内全覆盖", "量体裁衣式排课", "每日跟进反馈"],
     href: "/k12",
   },
