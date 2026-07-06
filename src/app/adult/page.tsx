@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ManualLayout } from "@/components/manual/ManualLayout";
 import { ChapterSection } from "@/components/manual/ChapterSection";
 import { ComparisonTable } from "@/components/manual/ComparisonTable";
+import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "成人英语",
@@ -13,7 +14,7 @@ export default function AdultPage() {
   return (
     <ManualLayout
       title="成人英语"
-      subtitle="IELTS General · 职场提升 · 18岁以上 · 定制教材"
+      subtitle="IELTS<sup>2</sup> General · 职场提升 · 18岁以上 · 定制教材"
     >
       <ChapterSection title="面向人群">
         <ul>
@@ -29,7 +30,7 @@ export default function AdultPage() {
           <div className="bg-neutral-50 rounded-xl p-6">
             <h4 className="font-semibold text-brand">📋 定制化教材</h4>
             <p className="mt-2 text-sm text-neutral-600">
-              根据学员的具体行业和需求，选择《Interchange》等教材或定制方案，不搞一刀切。
+              根据学员的具体行业和需求，选择《Interchange<sup>3</sup>》等教材或定制方案，不搞一刀切。
             </p>
           </div>
           <div className="bg-neutral-50 rounded-xl p-6">

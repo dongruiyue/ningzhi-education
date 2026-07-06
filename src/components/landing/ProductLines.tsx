@@ -26,7 +26,7 @@ export function ProductLines() {
                 </h3>
                 <p className="text-sm text-brand mt-1">{line.subtitle}</p>
                 <p className="mt-4 text-sm text-neutral-600 leading-relaxed flex-1">
-                  {line.description}
+                  <span dangerouslySetInnerHTML={{ __html: line.description }} />
                 </p>
                 <ul className="mt-6 space-y-2">
                   {line.features.map((f) => (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TeacherGrid } from "./TeacherGrid";
+import { PageNotes } from "@/components/ui/PageNotes";
 
 export const metadata: Metadata = {
   title: "师资团队",
@@ -23,10 +24,10 @@ export default function TeachersPage() {
           不做包装，不编履历——我们认为，老师自己考出来的分数，比任何标签都有说服力。
         </p>
         <div className="flex flex-wrap gap-3 text-sm text-neutral-400">
-          <span className="bg-neutral-100 rounded-full px-4 py-2">英语 · 雅思/托福/GRE</span>
-          <span className="bg-neutral-100 rounded-full px-4 py-2">数学 · A-Level/AP/AMC</span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">英语 · 雅思<sup>1</sup>/托福<sup>2</sup>/GRE<sup>3</sup></span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">数学 · A-Level<sup>4</sup>/AP<sup>5</sup>/AMC<sup>6</sup></span>
           <span className="bg-neutral-100 rounded-full px-4 py-2">物理 · 生物 · 经济 · 地理</span>
-          <span className="bg-neutral-100 rounded-full px-4 py-2">DSE · SAT · IB</span>
+          <span className="bg-neutral-100 rounded-full px-4 py-2">DSE<sup>7</sup> · SAT<sup>8</sup> · IB<sup>9</sup></span>
         </div>
       </section>
 
@@ -48,6 +49,18 @@ export default function TeachersPage() {
           预约试听 →
         </a>
       </section>
+      <PageNotes items={[
+    { num: 1, name: '雅思', owner: 'British Council、IDP Education 及 Cambridge English Language Assessment' },
+      { num: 2, name: '托福', owner: 'Educational Testing Service (ETS)' },
+      { num: 3, name: 'GRE', owner: 'Educational Testing Service (ETS)' },
+      { num: 4, name: 'A-Level', owner: 'Cambridge International Education' },
+      { num: 5, name: 'AP', owner: 'College Board' },
+      { num: 6, name: 'AMC', owner: 'Mathematical Association of America' },
+      { num: 7, name: 'DSE', owner: '香港考试及评核局' },
+      { num: 8, name: 'SAT', owner: 'College Board' },
+      { num: 9, name: 'IB', owner: 'International Baccalaureate Organization' }
+      ]} />
+
     </div>
   );
 }
