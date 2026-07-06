@@ -65,7 +65,7 @@ export default function StudyAbroadPage() {
         </ol>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">为什么自律 + 体系才是关键</h3>
-        <p>雅思备考是一场<strong>持久战</strong>。大多数学生的问题不是"学不会"，而是"坚持不下来"。</p>
+        <p>雅思备考是一场<strong>持久战</strong>。大多数学生不是学不会，是坚持不下来。</p>
         <ul>
           <li><strong>体系化教学</strong>：每个阶段有明确目标和任务</li>
           <li><strong>督学机制</strong>：老师每天跟进，不给你偷懒的机会</li>
@@ -73,7 +73,7 @@ export default function StudyAbroadPage() {
         </ul>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">为什么选择真经体系</h3>
-        <p>真经教学体系不是一套"技巧大全"，而是一个<strong>完整的语言能力培养系统</strong>：</p>
+        <p>真经教学体系是一套<strong>完整的语言能力培养系统</strong>，不是技巧大全：</p>
         <ul>
           <li>听力：从"听到单词"到"听懂逻辑"</li>
           <li>阅读：从"逐字翻译"到"结构化阅读"</li>
@@ -211,7 +211,7 @@ export default function StudyAbroadPage() {
           before="6.0"
           after="7.0"
           duration="4个月"
-          story="Alex已考过两次雅思，都卡在6.0。问题不是学不会，而是不知道哪里有问题。入学测试发现阅读方法效率低，写作缺乏逻辑框架。针对性调整后，四个月实现突破。"
+          story="Alex已考过两次雅思，都卡在6.0。考了两次都卡在同一分数，问题不是学不会，是不知道短板在哪。入学测试发现阅读方法效率低，写作缺乏逻辑框架。针对性调整后，四个月实现突破。"
         />
         <CaseCard
           name="小陈 — 零基础到 5.5，一年蜕变"

@@ -128,7 +128,7 @@ export default function MethodologyPage() {
         </h2>
         <p className="text-neutral-600 leading-relaxed">
           <strong className="text-neutral-900">60 分钟，3 篇文章，40 道题。</strong>{" "}
-          速度是决定性因素。大部分考生的问题不是"读不懂"，而是"读不完"。
+          速度是决定性因素。大部分考生读不完，不是读不懂。
         </p>
 
         <div className="bg-neutral-50 rounded-2xl p-6 sm:p-8 space-y-4">
@@ -318,7 +318,7 @@ export default function MethodologyPage() {
         </h2>
         <p className="text-neutral-600 leading-relaxed">
           <strong className="text-neutral-900">扔掉按字母背单词的方法。</strong>{" "}
-          雅思考查的不是词汇量绝对值，而是"在正确场景下用对词"的能力。
+          雅思考的是在正确场景下用对词，不是你认识多少单词。
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
