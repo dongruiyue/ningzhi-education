@@ -15,7 +15,7 @@ export const BRAND = {
     phone: "",
     wechat: "",
     email: "",
-    address: "深圳市",
+    address: "深圳市福田区田面城市大厦16C",
   },
 } as const;
 

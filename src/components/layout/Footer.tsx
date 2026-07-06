@@ -47,20 +47,21 @@ export function Footer() {
 
       <div className="border-t border-neutral-800 px-6 py-8 space-y-3 text-xs text-neutral-500 leading-relaxed">
         <p>
-          IELTS<sup>&reg;</sup> 为 British Council、IDP Education 及 Cambridge English Language Assessment 的注册商标。
-          TOEFL<sup>&reg;</sup> 及 GRE<sup>&reg;</sup> 为 Educational Testing Service (ETS) 的注册商标。
-          SAT<sup>&reg;</sup> 及 AP<sup>&reg;</sup> 为 College Board 的注册商标。
-          KET、PET、FCE 为 Cambridge English Language Assessment 的注册商标。
-          A-Level 及 IGCSE 为 Cambridge International Education 的注册商标。
-          IB<sup>&reg;</sup> 为 International Baccalaureate Organization 的注册商标。
-          DSE 为香港考试及评核局的注册商标。
+          本网站提及的 IELTS<sup>&reg;</sup>¹、TOEFL<sup>&reg;</sup>²、GRE<sup>&reg;</sup>³、SAT<sup>&reg;</sup>⁴、AP<sup>&reg;</sup>⁵、KET/PET/FCE⁶、A-Level/IGCSE⁷、IB<sup>&reg;</sup>⁸、DSE⁹、Unlock/Power Up/Interchange¹⁰、Pathways/Reading Explorer/Great Writing¹¹ 等商标、教材名称及机构名称均为其各自权利持有人的财产，仅用于教学参考和课程说明目的。宁致教育与上述机构无隶属、赞助或 endorsement 关系。
         </p>
-        <p>
-          《Unlock》《Power Up》《Interchange》为 Cambridge University Press 出版的教材系列。
-          《Pathways》《Reading Explorer》《Great Writing》为 National Geographic Learning 出版的教材系列。
-          本网站中提及的所有商标、教材名称及机构名称均为其各自权利持有人的财产，仅用于教学参考和课程说明目的。
-          宁致教育与上述机构无隶属、赞助或 endorsement 关系。
-        </p>
+        <div className="pt-4 border-t border-neutral-800 space-y-1.5">
+          <p>¹ IELTS 为 British Council、IDP Education 及 Cambridge English Language Assessment 的注册商标。</p>
+          <p>² TOEFL 为 Educational Testing Service (ETS) 的注册商标。</p>
+          <p>³ GRE 为 Educational Testing Service (ETS) 的注册商标。</p>
+          <p>⁴ SAT 为 College Board 的注册商标。</p>
+          <p>⁵ AP 为 College Board 的注册商标。</p>
+          <p>⁶ KET、PET、FCE 为 Cambridge English Language Assessment 的注册商标。</p>
+          <p>⁷ A-Level 及 IGCSE 为 Cambridge International Education 的注册商标。</p>
+          <p>⁸ IB 为 International Baccalaureate Organization 的注册商标。</p>
+          <p>⁹ DSE 为香港考试及评核局的注册商标。</p>
+          <p>¹⁰ 《Unlock》《Power Up》《Interchange》为 Cambridge University Press 出版的教材系列。</p>
+          <p>¹¹ 《Pathways》《Reading Explorer》《Great Writing》为 National Geographic Learning 出版的教材系列。</p>
+        </div>
       </div>
 
       <div className="border-t border-neutral-800 px-6 py-6 text-center text-xs text-neutral-500">
