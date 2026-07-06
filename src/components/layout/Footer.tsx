@@ -47,20 +47,23 @@ export function Footer() {
 
       <div className="border-t border-neutral-800 px-6 py-8 space-y-3 text-xs text-neutral-500 leading-relaxed">
         <p>
-          本网站提及的 IELTS<sup>&reg;</sup>¹、TOEFL<sup>&reg;</sup>²、GRE<sup>&reg;</sup>³、SAT<sup>&reg;</sup>⁴、AP<sup>&reg;</sup>⁵、KET/PET/FCE⁶、A-Level/IGCSE⁷、IB<sup>&reg;</sup>⁸、DSE⁹、Unlock/Power Up/Interchange¹⁰、Pathways/Reading Explorer/Great Writing¹¹ 等商标、教材名称及机构名称均为其各自权利持有人的财产，仅用于教学参考和课程说明目的。宁致教育与上述机构无隶属、赞助或 endorsement 关系。
+          IELTS<sup>&reg;</sup>¹、TOEFL<sup>&reg;</sup>²、GRE<sup>&reg;</sup>³、SAT<sup>&reg;</sup>⁴、AP<sup>&reg;</sup>⁵、KET/PET/FCE⁶、A-Level/IGCSE⁷、IB<sup>&reg;</sup>⁸、DSE⁹、Unlock/Power Up/Interchange¹⁰、Pathways/Reading Explorer/Great Writing¹¹
         </p>
-        <div className="pt-4 border-t border-neutral-800 space-y-1.5">
-          <p>¹ IELTS 为 British Council、IDP Education 及 Cambridge English Language Assessment 的注册商标。</p>
-          <p>² TOEFL 为 Educational Testing Service (ETS) 的注册商标。</p>
-          <p>³ GRE 为 Educational Testing Service (ETS) 的注册商标。</p>
-          <p>⁴ SAT 为 College Board 的注册商标。</p>
-          <p>⁵ AP 为 College Board 的注册商标。</p>
-          <p>⁶ KET、PET、FCE 为 Cambridge English Language Assessment 的注册商标。</p>
-          <p>⁷ A-Level 及 IGCSE 为 Cambridge International Education 的注册商标。</p>
-          <p>⁸ IB 为 International Baccalaureate Organization 的注册商标。</p>
-          <p>⁹ DSE 为香港考试及评核局的注册商标。</p>
-          <p>¹⁰ 《Unlock》《Power Up》《Interchange》为 Cambridge University Press 出版的教材系列。</p>
-          <p>¹¹ 《Pathways》《Reading Explorer》《Great Writing》为 National Geographic Learning 出版的教材系列。</p>
+        <p className="text-neutral-600 mt-1">
+          均为各自权利持有人的财产，仅用于教学参考和课程说明目的。宁致教育与上述机构无隶属、赞助或 endorsement 关系。
+        </p>
+        <div className="mt-4 pt-4 border-t border-neutral-800 space-y-1">
+          <p>¹ IELTS — British Council、IDP Education 及 Cambridge English Language Assessment</p>
+          <p>² TOEFL — Educational Testing Service (ETS)</p>
+          <p>³ GRE — Educational Testing Service (ETS)</p>
+          <p>⁴ SAT — College Board</p>
+          <p>⁵ AP — College Board</p>
+          <p>⁶ KET、PET、FCE — Cambridge English Language Assessment</p>
+          <p>⁷ A-Level、IGCSE — Cambridge International Education</p>
+          <p>⁸ IB — International Baccalaureate Organization</p>
+          <p>⁹ DSE — 香港考试及评核局</p>
+          <p>¹⁰ 《Unlock》《Power Up》《Interchange》— Cambridge University Press</p>
+          <p>¹¹ 《Pathways》《Reading Explorer》《Great Writing》— National Geographic Learning</p>
         </div>
       </div>
 
