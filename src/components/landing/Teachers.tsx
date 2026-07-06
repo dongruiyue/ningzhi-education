@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import Stack from "@/components/ui/Stack";
 
 const TEACHERS = [
   {
@@ -36,20 +36,6 @@ const TEACHERS = [
 ];
 
 export function Teachers() {
-  const [index, setIndex] = useState(0);
-  const [dir, setDir] = useState<"left" | "right">("right");
-  const t = TEACHERS[index];
-
-  const next = useCallback(() => {
-    setDir("right");
-    setIndex((i) => (i + 1) % TEACHERS.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setDir("left");
-    setIndex((i) => (i - 1 + TEACHERS.length) % TEACHERS.length);
-  }, []);
-
   return (
     <section className="py-20 md:py-28 bg-neutral-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -62,86 +48,48 @@ export function Teachers() {
             好老师，才有好成绩
           </h2>
           <p className="mt-4 text-lg text-neutral-400">
-            真实分数可查——我们老师跟学生一起进雅思考场
+            点击或拖拽卡片切换老师
           </p>
         </div>
 
-        {/* Dealer */}
-        <div className="max-w-2xl mx-auto relative">
-          {/* Card stack decoration - poker dealer feel */}
-          <div className="absolute -inset-4 pointer-events-none select-none" aria-hidden="true">
-            <div className="absolute top-2 left-2 right-2 bottom-2 rounded-2xl bg-neutral-800/50 border border-neutral-700/50 -rotate-3" />
-            <div className="absolute top-1 left-1 right-1 bottom-1 rounded-2xl bg-neutral-800/30 border border-neutral-700/30 rotate-2" />
-          </div>
-
-          {/* Active card */}
-          <div
-            key={index}
-            className="relative bg-neutral-800 border border-neutral-700 rounded-2xl p-8 animate-deal"
-            style={{
-              animation: dir === "right"
-                ? "deal-in-right 0.35s cubic-bezier(0.22, 1, 0.36, 1)"
-                : "deal-in-left 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
-            }}
-          >
-            <div className="flex flex-col gap-5">
-              {/* Name + title */}
-              <div>
-                <h3 className="text-xl font-bold text-white">{t.name}</h3>
-                <p className="text-sm text-brand-light mt-1">{t.title}</p>
+        {/* Stack */}
+        <div className="max-w-xl mx-auto h-[360px] sm:h-[340px]">
+          <Stack
+            autoplay
+            autoplayDelay={4000}
+            pauseOnHover
+            sendToBackOnClick
+            sensitivity={180}
+            mobileClickOnly
+            cards={TEACHERS.map((t) => (
+              <div
+                key={t.name}
+                className="w-full h-full bg-neutral-800 border border-neutral-700 rounded-2xl p-6 sm:p-7 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
+                    {t.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-brand-light mt-1">
+                    {t.title}
+                  </p>
+                  <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed line-clamp-3">
+                    {t.description}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 mt-4">
+                  {t.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 text-[11px] sm:text-xs rounded-full bg-brand/10 text-brand-light"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              {/* Description */}
-              <p className="text-neutral-400 leading-relaxed text-sm">{t.description}</p>
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {t.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-xs font-medium rounded-full bg-brand/10 text-brand-light"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Nav buttons */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              aria-label="上一张"
-              className="w-10 h-10 rounded-full border border-neutral-600 flex items-center justify-center text-neutral-400 hover:text-white hover:border-neutral-400 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Dots */}
-            <div className="flex gap-2">
-              {TEACHERS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setDir(i > index ? "right" : "left"); setIndex(i); }}
-                  aria-label={`第 ${i + 1} 位老师`}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === index ? "bg-brand w-6" : "bg-neutral-600 hover:bg-neutral-500"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              aria-label="下一张"
-              className="w-10 h-10 rounded-full border border-neutral-600 flex items-center justify-center text-neutral-400 hover:text-white hover:border-neutral-400 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+            ))}
+          />
         </div>
       </div>
     </section>
