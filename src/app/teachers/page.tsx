@@ -42,7 +42,7 @@ export default function TeachersPage() {
           预约咨询，我们会根据学生基础和升学目标，匹配最合适的老师。
         </p>
         <a
-          href="tel:"
+          href="/#trial"
           className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-dark transition-colors"
         >
           预约试听 →
