@@ -8,7 +8,7 @@ import { ComparisonTable } from "@/components/manual/ComparisonTable";
 export const metadata: Metadata = {
   title: "校内提升 / 能力素养",
   description:
-    "宁致教育校内提升（6-15岁），Unlock<sup>10</sup> / Pathways<sup>11</sup> / Power Up<sup>10</sup> / Reading Explorer<sup>11</sup> / Great Writing<sup>11</sup> 五大国际教材，KET/PET/校内考试全覆盖，能力+分数双提升。",
+    "宁致教育校内提升（6-15岁），Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大国际教材，KET/PET/校内考试全覆盖，能力+分数双提升。",
 };
 
 const TEXTBOOK_DATA = [
@@ -20,24 +20,24 @@ const TEXTBOOK_DATA = [
 ];
 
 const AGE_MATRIX = [
-  { age: "6-8岁", main: "Power Up", supplement: "Reading Explorer<sup>11</sup> Foundation" },
-  { age: "8-10岁", main: "Unlock Basic", supplement: "Reading Explorer<sup>11</sup> L1" },
-  { age: "10-12岁", main: "Unlock<sup>10</sup> L1-L2", supplement: "Great Writing<sup>11</sup> L1" },
-  { age: "12-15岁", main: "Pathways<sup>11</sup> L1-L2", supplement: "Reading Explorer<sup>11</sup> L2+ / Great Writing<sup>11</sup> L2+" },
+  { age: "6-8岁", main: "Power Up", supplement: "Reading Explorer Foundation" },
+  { age: "8-10岁", main: "Unlock Basic", supplement: "Reading Explorer L1" },
+  { age: "10-12岁", main: "Unlock L1-L2", supplement: "Great Writing L1" },
+  { age: "12-15岁", main: "Pathways L1-L2", supplement: "Reading Explorer L2+ / Great Writing L2+" },
 ];
 
 const GOAL_MATRIX = [
-  { goal: "备考KET", combo: "Power Up（后期）→ Unlock<sup>10</sup> L1 + Reading Explorer<sup>11</sup> L1" },
-  { goal: "备考PET", combo: "Unlock<sup>10</sup> L2 → Pathways<sup>11</sup> L1 + Great Writing<sup>11</sup> L1" },
+  { goal: "备考KET", combo: "Power Up（后期）→ Unlock L1 + Reading Explorer L1" },
+  { goal: "备考PET", combo: "Unlock L2 → Pathways L1 + Great Writing L1" },
   { goal: "校内提分", combo: "Unlock（同步校内）+ Great Writing（写作专项）" },
   { goal: "综合素养提升", combo: "Reading Explorer（阅读）+ Unlock 或 Pathways（听说写）" },
 ];
 
 const LEVEL_MATRIX = [
   { level: "零基础/刚接触", start: "Power Up Starter" },
-  { level: "能简单对话", start: "Unlock Basic 或 Power Up<sup>10</sup> L3" },
-  { level: "能基本交流", start: "Unlock<sup>10</sup> L1 或 Pathways<sup>11</sup> Foundations" },
-  { level: "能流利交流", start: "Pathways<sup>11</sup> L1+" },
+  { level: "能简单对话", start: "Unlock Basic 或 Power Up L3" },
+  { level: "能基本交流", start: "Unlock L1 或 Pathways Foundations" },
+  { level: "能流利交流", start: "Pathways L1+" },
 ];
 
 export default function K12Page() {
@@ -55,7 +55,7 @@ export default function K12Page() {
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">我们的优势</h3>
         <ul>
-          <li><strong>多教材体系</strong>：Unlock<sup>10</sup> / Pathways<sup>11</sup> / Power Up<sup>10</sup> / Reading Explorer<sup>11</sup> / Great Writing<sup>11</sup> 五大国际教材，按需组合</li>
+          <li><strong>多教材体系</strong>：Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大国际教材，按需组合</li>
           <li><strong>严抓督学</strong>：课后跟踪不放松，每日打卡确保学习效果</li>
           <li><strong>全周期陪伴</strong>：从6岁到15岁，一路陪伴孩子的英语成长</li>
           <li><strong>能力+分数双提升</strong>：既提升综合英语素养，也确保考试出分</li>
