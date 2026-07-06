@@ -48,12 +48,12 @@ export function ManualLayout({ title, subtitle, children }: ManualLayoutProps) {
         <p className="mt-2 text-neutral-600">
           预约试听课，体验宁致教育的真实课堂
         </p>
-        <button
-          onClick={() => window.print()}
+        <Link
+          href="/#trial"
           className="mt-6 inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-dark transition-colors"
         >
-          下载完整手册 PDF
-        </button>
+          立即预约试听 →
+        </Link>
       </div>
     </article>
   );
