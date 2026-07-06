@@ -277,7 +277,7 @@ export default function CasesPage() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="tel:"
+            href="/#trial"
             className="inline-flex items-center px-6 py-3 text-sm font-medium text-neutral-900 bg-white rounded-full hover:bg-neutral-100 transition-colors"
           >
             预约诊断评估 →
