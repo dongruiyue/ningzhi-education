@@ -37,7 +37,7 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold text-white mb-4">联系我们</h4>
           <ul className="space-y-2 text-sm text-neutral-400">
-            {BRAND.contact.address && <li>{BRAND.contact.address}</li>}
+            {BRAND.contact.address && <li>地址：{BRAND.contact.address}</li>}
             {BRAND.contact.phone && <li>电话：{BRAND.contact.phone}</li>}
             {BRAND.contact.wechat && <li>微信：{BRAND.contact.wechat}</li>}
             {BRAND.contact.email && <li>邮箱：{BRAND.contact.email}</li>}
