@@ -12,7 +12,7 @@ export const BRAND = {
     "在深圳，用真实结果说话的英语教育——对抗消课逻辑、黑盒感和夸大营销。",
   url: "https://ningzhi.education",
   contact: {
-    phone: "",
+    phone: "18998994092",
     wechat: "",
     email: "",
     address: "深圳市福田区田面城市大厦16C",
