@@ -75,8 +75,10 @@ export function TrialBooking() {
                 name="phone"
                 type="tel"
                 required
-                placeholder="请输入手机号"
-                className="w-full px-4 py-3 text-sm rounded-xl border border-neutral-200 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-shadow"
+                placeholder="请输入11位手机号"
+                pattern="[1][3-9]\d{9}"
+                title="请输入正确的11位手机号"
+                className="w-full px-4 py-3 text-sm rounded-xl border border-neutral-200 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-shadow invalid:border-error invalid:focus:ring-error/30"
               />
             </div>
           </div>
