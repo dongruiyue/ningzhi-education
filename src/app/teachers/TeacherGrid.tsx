@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileCard from "@/components/ui/ProfileCard";
+import { TeacherCard } from "./TeacherCard";
 
 interface TeacherData {
   id: number;
@@ -32,19 +32,7 @@ export function TeacherGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
       {TEACHERS.map((teacher) => (
-        <ProfileCard
-          key={teacher.id}
-          name={teacher.name}
-          title={teacher.title}
-          handle={teacher.handle}
-          status={teacher.status}
-          enableTilt={true}
-          enableHolo={true}
-        >
-          {teacher.tags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </ProfileCard>
+        <TeacherCard key={teacher.id} {...teacher} />
       ))}
     </div>
   );
