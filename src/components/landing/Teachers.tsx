@@ -53,7 +53,7 @@ export function Teachers() {
         </div>
 
         {/* Stack */}
-        <div className="max-w-xl mx-auto h-[360px] sm:h-[340px]">
+        <div className="max-w-[340px] sm:max-w-xl mx-auto h-[380px] sm:h-[340px]">
           <Stack
             autoplay
             autoplayDelay={4000}
