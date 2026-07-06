@@ -60,7 +60,6 @@ export function Teachers() {
             pauseOnHover
             sendToBackOnClick
             sensitivity={180}
-            mobileClickOnly
             cards={TEACHERS.map((t) => (
               <div
                 key={t.name}

@@ -48,3 +48,7 @@
 .card {
   touch-action: none;
 }
+
+.stack-container {
+  overflow: hidden;
+}
