@@ -35,11 +35,11 @@ export function TeacherCard({ name, title, handle, status, tags }: TeacherCardPr
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="h-full bg-neutral-900 rounded-2xl p-6 sm:p-8 flex flex-col"
+      className="h-full bg-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col"
       style={{
         transformStyle: "preserve-3d",
         perspective: "800px",
-        boxShadow: "0 0 0 1px rgba(37,99,235,0.08), 0 8px 32px -8px rgba(0,0,0,0.4)",
+        boxShadow: "0 0 0 1px rgba(37,99,235,0.08), 0 8px 32px -8px rgba(0,0,0,0.3)",
       }}
     >
       {/* Blue accent bar */}
