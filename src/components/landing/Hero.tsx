@@ -1,14 +1,12 @@
 import { Button } from "@/components/ui/Button";
 import { BRAND } from "@/lib/constants";
+import Silk from "@/components/ui/Silk";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-black">
-      {/* Full-bleed photo + dark gradient scrim */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
-      />
+      {/* Silk animated background */}
+      <Silk speed={4} scale={0.8} color="#1D4ED8" noiseIntensity={1.2} rotation={0.3} />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
