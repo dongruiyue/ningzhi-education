@@ -34,3 +34,17 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.stack-container {
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+
+.card-rotate,
+.card-rotate-disabled {
+  touch-action: none;
+}
+
+.card {
+  touch-action: none;
+}
