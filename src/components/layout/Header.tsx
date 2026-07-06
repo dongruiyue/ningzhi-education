@@ -33,7 +33,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            href={`tel:${BRAND.contact.phone}`}
+            href="/#trial"
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-light transition-colors"
           >
             预约试听
@@ -70,7 +70,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            href={`tel:${BRAND.contact.phone}`}
+            href="/#trial"
             className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-brand-light transition-colors"
           >
             预约试听

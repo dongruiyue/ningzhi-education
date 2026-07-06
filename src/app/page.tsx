@@ -5,6 +5,7 @@ import { Stats } from "@/components/landing/Stats";
 import { Teachers } from "@/components/landing/Teachers";
 import { CTASection } from "@/components/landing/CTASection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TrialBooking } from "@/components/trial/TrialBooking";
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <CTASection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TrialBooking />
       </ScrollReveal>
     </>
   );
