@@ -66,11 +66,11 @@ export function TeacherCard({ name, title, handle, status, tags }: TeacherCardPr
 
         <p className="text-xs text-white/40 mt-3">{status}</p>
 
-        <div className="flex flex-wrap gap-2 mt-auto pt-4" style={{ minHeight: 64 }}>
+        <div className="flex flex-wrap gap-1.5 mt-auto pt-4" style={{ minHeight: 56 }}>
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block px-2.5 py-1 text-xs rounded-md bg-white/8 text-white/80 border border-white/8"
+              className="inline-block px-2.5 py-0.5 text-xs rounded-md bg-white/8 text-white/80 border border-white/8"
             >
               {tag}
             </span>
