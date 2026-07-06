@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 
 interface TeacherCardProps {
   name: string;
@@ -10,8 +10,12 @@ interface TeacherCardProps {
   tags: string[];
 }
 
-function TiltCard({ children }: { children: React.ReactNode }) {
+const CARD_BG = "bg-[#0b1a33]";
+const CARD_SHADOW = "0 0 0 1px rgba(37,99,235,0.12), 0 12px 40px -8px rgba(0,0,0,0.5)";
+
+export function TeacherCard({ name, title, handle, status, tags }: TeacherCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [hover, setHover] = useState(false);
 
   const onMove = useCallback((e: React.PointerEvent) => {
     const el = ref.current;
@@ -19,64 +23,60 @@ function TiltCard({ children }: { children: React.ReactNode }) {
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+    el.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
   }, []);
 
   const onLeave = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = "perspective(800px) rotateY(0deg) rotateX(0deg)";
+    if (ref.current) {
+      ref.current.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg)";
+    }
+    setHover(false);
   }, []);
 
   return (
     <div
       ref={ref}
       onPointerMove={onMove}
+      onPointerEnter={() => setHover(true)}
       onPointerLeave={onLeave}
+      className="h-full"
       style={{
-        transition: "transform 0.4s ease-out",
+        transition: "transform 0.5s ease-out",
         transformStyle: "preserve-3d",
-        willChange: "transform",
       }}
     >
-      {children}
-    </div>
-  );
-}
-
-export function TeacherCard({ name, title, handle, status, tags }: TeacherCardProps) {
-  return (
-    <TiltCard>
-      <div className="bg-neutral-900 rounded-2xl p-6 sm:p-8 select-none h-full flex flex-col"
-        style={{ minHeight: 260, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 40px -12px rgba(0,0,0,0.4)" }}>
-
+      <div
+        className={`${CARD_BG} rounded-2xl p-6 sm:p-8 h-full flex flex-col transition-shadow duration-500`}
+        style={{
+          minHeight: 260,
+          boxShadow: hover
+            ? "0 0 0 1px rgba(37,99,235,0.25), 0 24px 48px -12px rgba(0,0,0,0.6), 0 0 60px -10px rgba(37,99,235,0.15)"
+            : CARD_SHADOW,
+        }}
+      >
         {/* Name + handle */}
         <div>
           <h3 className="text-xl font-bold text-white">{name}</h3>
           <p className="text-sm text-white/40 mt-0.5">@{handle}</p>
         </div>
 
-        {/* Divider */}
         <hr className="border-white/8 my-4" />
 
-        {/* Title — fixed 2-line height */}
         <p className="text-sm text-white/70 leading-relaxed line-clamp-2 min-h-[2.5em]">{title}</p>
 
-        {/* Stats */}
         <p className="text-xs text-white/40 mt-3">{status}</p>
 
-        {/* Tags — pushed to bottom, fixed 2-row height */}
         <div className="flex flex-wrap gap-2 mt-auto pt-4" style={{ minHeight: 64 }}>
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block px-2.5 py-1 text-xs rounded-md bg-white/8 text-white/70 border border-white/8"
+              className="inline-block px-2.5 py-1 text-xs rounded-md bg-white/8 text-white/80 border border-white/8"
             >
               {tag}
             </span>
           ))}
         </div>
       </div>
-    </TiltCard>
+    </div>
   );
 }
