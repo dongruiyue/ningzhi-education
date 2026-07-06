@@ -37,17 +37,17 @@ const TEACHERS = [
 
 export function Teachers() {
   return (
-    <section className="py-20 md:py-28 bg-neutral-900 text-white">
+    <section className="py-20 md:py-28 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-widest uppercase mb-4 block text-brand-light">
+          <span className="text-sm font-semibold tracking-widest uppercase mb-4 block text-brand">
             师资团队
           </span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             好老师，才有好成绩
           </h2>
-          <p className="mt-4 text-lg text-neutral-400">
+          <p className="mt-4 text-lg text-neutral-500">
             点击或拖拽卡片切换老师
           </p>
         </div>
@@ -64,16 +64,16 @@ export function Teachers() {
             cards={TEACHERS.map((t) => (
               <div
                 key={t.name}
-                className="w-full h-full bg-neutral-800 border border-neutral-700 rounded-2xl p-6 sm:p-7 flex flex-col justify-between"
+                className="w-full h-full bg-white border border-neutral-200 rounded-2xl p-6 sm:p-7 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-900">
                     {t.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-brand-light mt-1">
                     {t.title}
                   </p>
-                  <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed line-clamp-3">
+                  <p className="mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed line-clamp-3">
                     {t.description}
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export function Teachers() {
                   {t.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-0.5 text-[11px] sm:text-xs rounded-full bg-brand/10 text-brand-light"
+                      className="px-2.5 py-0.5 text-[11px] sm:text-xs rounded-full bg-brand/5 text-brand"
                     >
                       {tag}
                     </span>
