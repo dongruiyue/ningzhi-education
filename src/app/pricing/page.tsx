@@ -104,54 +104,6 @@ export default function PricingPage() {
           <div className="mt-10 p-6 rounded-xl bg-brand/5 border border-brand/20 text-center">
             <p className="text-base font-medium text-brand-dark">{p.groupBuy.highlight}</p>
           </div>
-        </div>
-      </section>
-
-      {/* ===== 师时经济学表格 ===== */}
-      <section className="bg-neutral-50 py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-neutral-900 text-center">为什么拼团反而机构更愿意给优惠？</h2>
-          <p className="mt-3 text-lg text-neutral-500 text-center max-w-2xl mx-auto">
-            因为同样一名老师一节课，带4个人比带1个人效率高得多——省出来的成本，我们分给你。
-          </p>
-          <div className="mt-10 overflow-hidden rounded-xl border border-neutral-200">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-neutral-100 text-neutral-600">
-                  <th className="px-5 py-4 text-left font-semibold">对比</th>
-                  <th className="px-5 py-4 text-center font-semibold">1V1</th>
-                  <th className="px-5 py-4 text-center font-semibold">标准小班(3-4人)</th>
-                  <th className="px-5 py-4 text-center font-semibold text-brand">拼团小班(5人)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-neutral-100">
-                <tr className="bg-white">
-                  <td className="px-5 py-4 text-neutral-600">你付的单价</td>
-                  <td className="px-5 py-4 text-center font-semibold text-neutral-900">680元/h</td>
-                  <td className="px-5 py-4 text-center font-semibold text-neutral-900">330元/h</td>
-                  <td className="px-5 py-4 text-center font-semibold text-brand">290元/h</td>
-                </tr>
-                <tr className="bg-neutral-50/50">
-                  <td className="px-5 py-4 text-neutral-600">比1V1省多少</td>
-                  <td className="px-5 py-4 text-center text-neutral-400">—</td>
-                  <td className="px-5 py-4 text-center text-success font-semibold">省52%</td>
-                  <td className="px-5 py-4 text-center text-success font-semibold">省57%</td>
-                </tr>
-                <tr className="bg-white">
-                  <td className="px-5 py-4 text-neutral-600">老师一节课总收入</td>
-                  <td className="px-5 py-4 text-center text-neutral-400">680元</td>
-                  <td className="px-5 py-4 text-center text-neutral-900">1,320元</td>
-                  <td className="px-5 py-4 text-center text-brand font-semibold">1,450元</td>
-                </tr>
-                <tr className="bg-neutral-50/50">
-                  <td className="px-5 py-4 text-neutral-600">机构怎么想</td>
-                  <td className="px-5 py-4 text-center text-neutral-400">一对一精细服务</td>
-                  <td className="px-5 py-4 text-center text-success font-semibold">双赢 👍</td>
-                  <td className="px-5 py-4 text-center text-success font-semibold">双赢 👍</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           <p className="mt-6 text-sm text-neutral-400 text-center">
             注：以上为早期推广价。随品牌成长和口碑积累，价格会逐步调整，已报名学员不受影响。
           </p>
