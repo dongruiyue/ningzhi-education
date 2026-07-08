@@ -107,6 +107,9 @@ export default function PricingPage() {
           <p className="mt-6 text-sm text-neutral-400 text-center">
             注：以上为早期推广价。随品牌成长和口碑积累，价格会逐步调整，已报名学员不受影响。
           </p>
+          <p className="mt-1 text-xs text-neutral-300 text-center">
+            * 拼多多为上海寻梦信息技术有限公司的注册商标，本页面仅用于类比说明。
+          </p>
         </div>
       </section>
 
