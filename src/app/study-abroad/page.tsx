@@ -6,42 +6,31 @@ import { CaseCard } from "@/components/manual/CaseCard";
 import { FAQItem } from "@/components/manual/FAQItem";
 
 export const metadata: Metadata = {
-  title: "留学英语",
+  title: "雅思培训",
   description:
-    "宁致教育留学英语（雅思A类），真经教学体系，听说读写四科精讲，严抓督学，15+年龄段，深圳高性价比雅思培训。",
+    "宁致教育雅思培训（雅思A类），真经教学体系，听说读写四科精讲，严抓督学，深圳高性价比雅思培训。",
 };
 
 export default function StudyAbroadPage() {
   return (
     <ManualLayout
-      title="留学英语"
-      subtitle="IELTS Academic · 15岁以上 · 真经教学体系"
+      title="雅思培训"
+      subtitle="雅思A类 · 15岁以上 · 真经教学体系"
     >
       {/* Chapter 1: Why Ningzhi */}
       <ChapterSection title="第一章 为什么选择宁致教育">
         <h3 className="text-lg font-semibold text-neutral-900">品牌理念</h3>
         <p>
-          宁致教育坚持<strong>竞争对立型定位</strong>——对抗行业消课逻辑、黑盒感和夸大营销。我们拒绝工厂式的大班教学，坚信每个学生都值得被看见、被严格跟进。
+          宁致教育坚持<strong>小而精</strong>的办学路线，让每个学生真正的被看见，从目标出发，严格督促，用心跟进。只要你带着学习态度来，我们就能让你带着结果走。
         </p>
-        <p>
-          在深圳，大机构能给你知名度，但我们能给你<strong>结果</strong>。我们不推长课包，不打大折扣——课时是手段不是商品，目标达成即结课。
-        </p>
-
-        <div className="bg-brand/5 border border-brand/20 rounded-xl p-5 mt-6">
-          <p className="text-sm text-neutral-700">
-            📖 想了解宁致为什么选择这条路？{" "}
-            <Link href="/about" className="text-brand font-medium underline underline-offset-2">
-              阅读我们的品牌故事 →
-            </Link>
-          </p>
-        </div>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">我们的优势</h3>
         <ul>
           <li><strong>真经教学体系</strong>：经过广泛验证的雅思教学方法论，听说读写四科成体系突破</li>
           <li><strong>严抓督学</strong>：不是上完课就结束，全程跟踪学习进度，确保每日有进展</li>
           <li><strong>高关注度</strong>：小班教学，每个学生都是我们的重点关注对象</li>
-          <li><strong>更优师资</strong>：比大机构更严格的教师筛选，更实在的价格</li>
+          <li><strong>更优师资</strong>：比大机构更严格的教师筛选</li>
+          <li><strong>更优价格</strong>：更实在的价格</li>
         </ul>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">适合人群</h3>
@@ -51,15 +40,24 @@ export default function StudyAbroadPage() {
           <li>自学缺乏自律性、需要体系化指导的学生</li>
           <li>单纯希望提升英语综合能力的学习者</li>
         </ul>
+
+        <div className="bg-brand/5 border border-brand/20 rounded-xl p-5 mt-6">
+          <p className="text-sm text-neutral-700">
+            📖 想了解宁致的故事？{" "}
+            <Link href="/about" className="text-brand font-medium underline underline-offset-2">
+              阅读我们的品牌故事 →
+            </Link>
+          </p>
+        </div>
       </ChapterSection>
 
       {/* Chapter 2: Misconceptions */}
       <ChapterSection title="第二章 雅思备考常见误区">
         <h3 className="text-lg font-semibold text-neutral-900">刷题 ≠ 提分</h3>
-        <p>很多学生陷入"刷题-对答案-刷更多题"的死循环。刷题只能检测水平，不能<strong>提升</strong>水平。</p>
+        <p>很多学生陷入"刷题-对答案-刷更多题"的死循环。刷题只能检测当前水平，不能高效<strong>提升</strong>水平。</p>
         <p>真正的提分来自于：</p>
         <ol>
-          <li><strong>诊断问题</strong> — 听说读写四科，弱项在哪里</li>
+          <li><strong>诊断问题</strong> — 听说读写四科，弱项在哪里，每科丢分点在哪里</li>
           <li><strong>针对性训练</strong> — 缺什么补什么，而不是泛泛刷题</li>
           <li><strong>反馈纠错</strong> — 错了要知道为什么错，怎么不错</li>
         </ol>
@@ -69,7 +67,7 @@ export default function StudyAbroadPage() {
         <ul>
           <li><strong>体系化教学</strong>：每个阶段有明确目标和任务</li>
           <li><strong>督学机制</strong>：老师每天跟进，不给你偷懒的机会</li>
-          <li><strong>可视化进步</strong>：定期模考，看到自己的分数在涨</li>
+          <li><strong>可视化进步</strong>：定期模考，看到自己的提升</li>
         </ul>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">为什么选择真经体系</h3>
@@ -225,7 +223,7 @@ export default function StudyAbroadPage() {
       {/* Chapter 6: FAQ */}
       <ChapterSection title="第六章 常见问题">
         <FAQItem question="课程费用是多少？">
-          <p>费用根据班型（一对一/小班/冲刺班）和学习周期有所不同。请预约咨询获取详细报价。我们承诺：比大机构更优的师资，更实在的价格。</p>
+          <p>费用根据班型（一对一/小班/冲刺班）和学习周期有所不同。请预约咨询获取详细报价。我们承诺：比大机构更优的师资，更优的价格。</p>
         </FAQItem>
         <FAQItem question="一般需要学多久才能出分？">
           <p>取决于入学水平和目标分数。一般来说：</p>

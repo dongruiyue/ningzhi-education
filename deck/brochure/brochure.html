@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>宁致教育 — 三折页传单</title>
+<style>
+/* ============================================================
+   SPACEX-STYLE TRI-FOLD BROCHURE
+   Canvas: A4 (210mm x 297mm) x 2 pages
+   Each page: 3 vertical panels (70mm x 297mm)
+   Rules: pure black, full-bleed photos with scrim,
+   uppercase light headlines, thin 1px rules
+   ============================================================ */
+
+@font-face {
+  font-family: "Deck Sans";
+  src: url("images/Saira.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: block;
+}
+@font-face {
+  font-family: "Deck Grotesque";
+  src: url("images/Archivo.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: block;
+}
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gray: #a7a7a7;
+  --gray-dim: #6f6f6f;
+  --rule: rgba(255, 255, 255, 0.22);
+  --font: "Deck Sans", "Archivo", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: #ccc;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  background: var(--black);
+  overflow: hidden;
+  color: var(--white);
+  page-break-after: always;
+  margin: 0 auto;
+}
+
+.panels {
+  display: flex;
+  width: 210mm;
+  height: 297mm;
+}
+
+.panel {
+  position: relative;
+  width: 70mm;
+  height: 297mm;
+  overflow: hidden;
+}
+
+.fold-line {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 297mm;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 20;
+  pointer-events: none;
+}
+.fold-line--1 { left: 70mm; }
+.fold-line--2 { left: 140mm; }
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.bg--right { object-position: right center; }
+.bg--left { object-position: left center; }
+
+.scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.scrim--l {
+  background: linear-gradient(90deg, #000 0%, #000 35%, rgba(0,0,0,0) 80%);
+}
+.scrim--r {
+  background: linear-gradient(270deg, #000 0%, #000 35%, rgba(0,0,0,0) 80%);
+}
+.scrim--b {
+  background: linear-gradient(0deg, #000 0%, #000 25%, rgba(0,0,0,0) 55%);
+}
+.scrim--full {
+  background: rgba(0,0,0,0.55);
+}
+.scrim--cover {
+  background: linear-gradient(135deg, #000 0%, #000 20%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 80%);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20mm 8mm;
+  height: 100%;
+}
+.content--bottom { justify-content: flex-end; padding-bottom: 18mm; }
+
+.headline {
+  font-family: var(--font);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--white);
+}
+.headline--xl { font-size: 22px; line-height: 1.15; }
+.headline--l { font-size: 18px; line-height: 1.2; }
+.headline--m { font-size: 14px; line-height: 1.3; letter-spacing: 0.1em; }
+.headline--sm { font-size: 11px; line-height: 1.4; letter-spacing: 0.08em; }
+
+.body {
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 8.5px;
+  line-height: 1.6;
+  color: var(--gray);
+  letter-spacing: 0.02em;
+}
+.body--bright { color: var(--white); }
+
+.eyebrow {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  color: var(--gray-dim);
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+}
+
+.rule {
+  width: 12mm;
+  height: 1px;
+  background: var(--rule);
+  margin: 3mm 0;
+}
+
+.mt-xs { margin-top: 2mm; }
+.mt-s { margin-top: 4mm; }
+.mt-m { margin-top: 7mm; }
+
+.feature {
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 8px;
+  line-height: 1.7;
+  color: var(--gray);
+  padding-left: 3mm;
+  border-left: 1px solid var(--rule);
+  margin-bottom: 2.5mm;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 5mm;
+  padding: 2.5mm 6mm;
+  border: 1px solid var(--rule);
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.service-item {
+  margin-bottom: 5mm;
+}
+.service-item:last-child { margin-bottom: 0; }
+
+.footer {
+  position: absolute;
+  bottom: 6mm;
+  left: 8mm;
+  right: 8mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.footer .logo { height: 4mm; opacity: 0.5; }
+.pageno {
+  font-family: var(--font);
+  font-size: 7px;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+}
+
+@page { size: A4 portrait; margin: 0; }
+@media print {
+  body { background: none; }
+  .page { margin: 0; page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     PAGE 1 - OUTSIDE
+     Panels: [Cover | Courses | Contact]
+     ================================================================ -->
+<section class="page">
+  <div class="panels">
+
+    <!-- Panel 1: Cover -->
+    <div class="panel">
+      <img class="bg" src="images/photo-01.jpg" alt="">
+      <div class="scrim scrim--cover"></div>
+      <div class="content content--bottom" style="padding-left:6mm;padding-right:6mm;">
+        <div class="eyebrow">NINGZHI EDUCATION</div>
+        <div class="headline headline--xl" style="font-size:26px;">宁致教育</div>
+        <div class="rule"></div>
+        <div class="headline headline--sm body--bright" style="font-weight:200;letter-spacing:0.12em;">找个敢说真话的机构</div>
+        <div class="body mt-xs" style="color:#fff;">正规出分的最后一站</div>
+        <div class="body mt-s" style="max-width:80%;">深圳本地 · 真实出分</div>
+      </div>
+    </div>
+
+    <!-- Panel 2: Courses -->
+    <div class="panel">
+      <img class="bg bg--right" src="images/photo-03.jpg" alt="">
+      <div class="scrim scrim--l"></div>
+      <div class="content">
+        <div class="eyebrow">OUR COURSES</div>
+        <div class="headline headline--m">三条产品线</div>
+        <div class="rule"></div>
+        <div class="service-item">
+          <div class="headline headline--sm body--bright" style="font-weight:400;">留学英语</div>
+          <div class="body mt-xs" style="font-size:7.5px;">IELTS Academic x 15+</div>
+        </div>
+        <div class="service-item">
+          <div class="headline headline--sm body--bright" style="font-weight:400;">校内提升</div>
+          <div class="body mt-xs" style="font-size:7.5px;">KET/PET x 6-15</div>
+        </div>
+        <div class="service-item">
+          <div class="headline headline--sm body--bright" style="font-weight:400;">成人英语</div>
+          <div class="body mt-xs" style="font-size:7.5px;">IELTS General x 18+</div>
+        </div>
+        <div class="body mt-m" style="font-size:7px;max-width:90%;">
+          真经教学体系 / 严抓督学 / 真实出分
+        </div>
+      </div>
+      <div class="fold-line fold-line--1"></div>
+    </div>
+
+    <!-- Panel 3: Contact -->
+    <div class="panel">
+      <img class="bg" src="images/photo-05.jpg" alt="">
+      <div class="scrim scrim--full"></div>
+      <div class="scrim scrim--b"></div>
+      <div class="content content--bottom" style="padding-left:6mm;padding-right:6mm;">
+        <div class="eyebrow">CONTACT</div>
+        <div class="headline headline--sm body--bright" style="font-weight:400;">预约试听</div>
+        <div class="rule"></div>
+        <div class="body mt-s" style="font-size:7.5px;">深圳市</div>
+        <div class="cta">了解更多</div>
+        <div class="body mt-s" style="font-size:6.5px;color:var(--gray-dim);">
+          每一步都看见，才叫放心
+        </div>
+      </div>
+      <div class="fold-line fold-line--2"></div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <img class="logo" src="images/logo.svg" alt="">
+    <span class="pageno">01 / 02</span>
+  </div>
+</section>
+
+<!-- ================================================================
+     PAGE 2 - INSIDE
+     Panels: [About | Methodology | Teacher]
+     ================================================================ -->
+<section class="page">
+  <div class="panels">
+
+    <!-- Panel 1: About -->
+    <div class="panel">
+      <img class="bg bg--right" src="images/photo-02.jpg" alt="">
+      <div class="scrim scrim--l"></div>
+      <div class="content">
+        <div class="eyebrow">ABOUT</div>
+        <div class="headline headline--m">关于宁致</div>
+        <div class="rule"></div>
+        <div class="body mt-s" style="font-size:7.5px;">
+          一个花了二十万不出分的<br>孩子，让我们决定做一间<br>"不一样"的机构。
+        </div>
+        <div class="body mt-s" style="font-size:7px;">
+          不推长课包 / 目标结课<br>
+          不囤课时 / 不消课
+        </div>
+        <div class="feature mt-m" style="border-left-color:var(--white);color:var(--white);font-size:7px;">
+          在深圳，用真实结果说话的英语教育
+        </div>
+      </div>
+      <div class="fold-line fold-line--1"></div>
+    </div>
+
+    <!-- Panel 2: Methodology -->
+    <div class="panel">
+      <img class="bg" src="images/photo-04.jpg" alt="">
+      <div class="scrim scrim--r"></div>
+      <div class="content" style="padding-left:6mm;padding-right:6mm;">
+        <div class="eyebrow">METHODOLOGY</div>
+        <div class="headline headline--m">真经教学体系</div>
+        <div class="rule"></div>
+        <div class="body mt-s" style="font-size:7.5px;">
+          行业内经过广泛验证的<br>领先教学方法论
+        </div>
+        <div class="feature mt-m">信号词定位</div>
+        <div class="feature">结构化速读</div>
+        <div class="feature">逻辑框架</div>
+        <div class="body mt-m" style="font-size:7px;">
+          助教每日督学<br>老师与学生共赴考场
+        </div>
+      </div>
+      <div class="fold-line fold-line--2"></div>
+    </div>
+
+    <!-- Panel 3: Teacher -->
+    <div class="panel">
+      <img class="bg bg--left" src="images/photo-06.jpg" alt="">
+      <div class="scrim scrim--r"></div>
+      <div class="content content--bottom" style="padding-left:6mm;padding-right:6mm;">
+        <div class="eyebrow">TEACHER</div>
+        <div class="headline headline--sm body--bright" style="font-weight:400;">教学总监</div>
+        <div class="headline headline--l body--bright mt-xs">崔老师</div>
+        <div class="rule"></div>
+        <div class="body mt-s" style="font-size:7px;">雅思 8.0 / 听力阅读双满分 9.0</div>
+        <div class="body" style="font-size:7px;">爱丁堡大学 TESOL 硕士</div>
+        <div class="body mt-xs" style="font-size:7px;color:var(--gray-dim);">3000+ 学员 / 7 年一线教学</div>
+        <div class="body mt-s" style="font-size:6.5px;color:var(--gray-dim);">
+          原新东方 / 学为贵 / 流利说
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <img class="logo" src="images/logo.svg" alt="">
+    <span class="pageno">02 / 02</span>
+  </div>
+</section>
+
+</body>
+</html>

@@ -25,7 +25,7 @@ export const NAVIGATION = [
   { label: "教学方法", href: "/methodology" },
   { label: "师资团队", href: "/teachers" },
   { label: "出分案例", href: "/cases" },
-  { label: "留学英语", href: "/study-abroad" },
+  { label: "雅思培训", href: "/study-abroad" },
   { label: "校内提升", href: "/k12" },
   { label: "成人英语", href: "/adult" },
 ] as const;
@@ -33,12 +33,12 @@ export const NAVIGATION = [
 export const PRODUCT_LINES = [
   {
     id: "study-abroad",
-    title: "留学英语",
-    subtitle: "IELTS Academic · 靠实力出分的最后一站",
+    title: "雅思培训",
+    subtitle: "雅思A类 · 靠实力出分的最后一站",
     ageRange: "15+",
     description:
-      "雅思A类备考，真经四科方法论，单科9分+综合8.5分教师授课，实力出分。",
-    features: ["真经四科方法论", "单科9分+综合8.5分教师", "助教每日督学", "实力出分"],
+      "雅思A类备考，真经教学体系，听说读写四科成体系突破，单科9分+综合8.5分教师授课。只要你带着学习态度来，我们就能让你带着结果走。",
+    features: ["真经四科方法论", "听说读写成体系突破", "助教每日督学", "单科9分+综合8.5分教师"],
     href: "/study-abroad",
   },
   {

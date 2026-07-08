@@ -10,7 +10,7 @@ export function StudyAbroadPrint() {
       {/* Cover */}
       <header className="mb-16 text-center">
         <h1 className="text-4xl font-bold tracking-tight">宁致教育</h1>
-        <p className="mt-2 text-xl text-brand font-semibold">留学英语 · 雅思A类</p>
+        <p className="mt-2 text-xl text-brand font-semibold">雅思培训 · 雅思A类</p>
         <p className="mt-4 text-neutral-600">真经教学体系 · 严抓督学 · 高性价比</p>
         <div className="mt-12 text-sm text-neutral-400">www.ningzhi.education</div>
       </header>
