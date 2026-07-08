@@ -13,7 +13,7 @@ export const BRAND = {
   url: "https://ningzhi.education",
   contact: {
     phone: "18998994092",
-    wechat: "ningzhijiaoyu",
+    wechat: "微信二维码",
     email: "ningzhijiaoyu@qq.com",
     address: "深圳市福田区华富街道田面城市大厦16C",
   },
