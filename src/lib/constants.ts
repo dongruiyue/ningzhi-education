@@ -43,12 +43,12 @@ export const PRODUCT_LINES = [
   },
   {
     id: "k12",
-    title: "校内提升",
-    subtitle: "KET · PET · 校内同步",
+    title: "KET · PET · 校内提升",
+    subtitle: "KET · PET · 能力素养 · 校内提升",
     ageRange: "6–15",
     description:
-      "Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大权威教材，灵活教学，助力KET/PET成绩获取及校内成绩提升。",
-    features: ["五大权威教材", "KET/PET及校内提升", "灵活教学", "每日跟进反馈"],
+      "KET / PET 考前冲刺 + 校内同步提升。五大权威教材，灵活组合，剑桥官方考试与校内成绩双目标。不管你是想拿证还是提分，都能找到适合的方案。",
+    features: ["KET/PET考前冲刺", "剑桥考试+校内双目标", "五大权威教材", "每日跟进反馈"],
     href: "/k12",
   },
   {

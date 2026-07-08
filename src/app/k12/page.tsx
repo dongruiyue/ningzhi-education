@@ -43,30 +43,31 @@ const LEVEL_MATRIX = [
 export default function K12Page() {
   return (
     <ManualLayout
-      title="校内提升 / 能力素养"
-      subtitle="KET · PET · 校内考试 · 6–15岁 · 五大国际教材"
+      title="KET · PET · 校内提升"
+      subtitle="KET · PET考前冲刺 · 能力素养 · 6–15岁 · 五大国际教材"
     >
       {/* Chapter 1: Why Ningzhi */}
       <ChapterSection title="第一章 为什么选择宁致教育">
         <h3 className="text-lg font-semibold text-neutral-900">我们的理念</h3>
         <p>
-          宁致教育坚持<strong>小而精</strong>的办学路线。我们相信每个孩子的英语学习路径都应该是独特的——不模板化、不流水线，用五套国际教材的组合能力，为每个孩子定制最合适的成长路径。
+          我们专注于<strong>KET / PET 考前冲刺</strong>和<strong>校内同步提升</strong>两个方向。不管你是想通过剑桥官方考试拿证书，还是想把校内英语成绩提上去，我们都有针对性的方案。</p>
+        <p>
+          Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大权威教材灵活组合，每一条路径都围绕剑桥考试标准设计，同时覆盖校内课程大纲。
         </p>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">我们的优势</h3>
         <ul>
-          <li><strong>多教材体系</strong>：Unlock / Pathways / Power Up / Reading Explorer / Great Writing 五大国际教材，按需组合</li>
+          <li><strong>KET/PET 考前冲刺</strong>：针对性题型训练 + 全真模考，有目标地备考</li>
           <li><strong>严抓督学</strong>：课后跟踪不放松，每日打卡确保学习效果</li>
           <li><strong>全周期陪伴</strong>：从6岁到15岁，一路陪伴孩子的英语成长</li>
-          <li><strong>能力+分数双提升</strong>：既提升综合英语素养，也确保考试出分</li>
+          <li><strong>校内同步提升</strong>：五大权威教材覆盖校内大纲，能力与分数双目标</li>
         </ul>
 
         <h3 className="text-lg font-semibold text-neutral-900 mt-6">适合人群</h3>
         <ul>
-          <li>希望提升英语综合素养的6-15岁学生</li>
-          <li>需要备考KET、PET的学生</li>
-          <li>校内英语需要补强提升的学生</li>
-          <li>希望走国际路线的低龄学习者</li>
+          <li><strong>备考KET、PET</strong>：目标通过剑桥官方考试、需要考前冲刺辅导的学生</li>
+          <li><strong>校内同步提升</strong>：校内英语成绩需要补强提升的学生</li>
+          <li><strong>能力素养</strong>：希望系统提升英语综合能力的6–15岁学生</li>
         </ul>
       </ChapterSection>
 
