@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思阅读真经标注法 — 交互式演示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'PingFang SC', system-ui, sans-serif; background: #f5f6f8; color: #1a1a2e; height: 100vh; overflow: hidden; }
+
+  .header {
+    background: #1a1a2e; color: #e8e8f0; padding: 14px 28px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15); position: relative; z-index: 10;
+  }
+  .header h1 { font-size: 17px; font-weight: 600; letter-spacing: .5px; }
+  .header .badge { background: #e94560; color: #fff; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 600; }
+  .header .legend { margin-left: auto; display: flex; gap: 16px; font-size: 12px; color: #b0b0c8; }
+  .header .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+  .legend-dot.proper { background: #2563eb; }
+  .legend-dot.synonym { background: #16a34a; }
+  .legend-dot.answer { background: #dc2626; }
+  .legend-dot.qmark { background: #7c3aed; }
+
+  .container { display: flex; height: calc(100vh - 52px); }
+
+  /* --- Left panel: Article --- */
+  .panel-left {
+    flex: 1.2; overflow-y: auto; padding: 24px 28px; background: #fff;
+    border-right: 1px solid #e0e0e8;
+  }
+  .panel-left h2 { font-size: 14px; color: #666; margin-bottom: 16px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+
+  .para { margin-bottom: 20px; line-height: 1.75; font-size: 14.5px; text-align: justify; position: relative; }
+  .para-label {
+    position: absolute; left: -32px; top: 0;
+    width: 24px; height: 24px; background: #1a1a2e; color: #fff;
+    border-radius: 50%; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Annotation styles — left panel */
+  .ann-circle { color: #2563eb; font-weight: 600; cursor: pointer; border-bottom: 2px solid #2563eb; transition: .15s; }
+  .ann-circle::before { content: '○'; font-weight: 400; font-size: 11px; vertical-align: text-top; }
+  .ann-circle::after { content: '○'; font-weight: 400; font-size: 11px; vertical-align: text-bottom; }
+
+  .ann-wave { color: #16a34a; cursor: pointer; border-bottom: 2px dashed #16a34a; transition: .15s; }
+
+  .ann-uline { color: #dc2626; font-weight: 600; cursor: pointer; border-bottom: 2px solid #dc2626; transition: .15s; }
+
+  .ann-q {
+    display: inline-block; background: #7c3aed15; color: #7c3aed; font-size: 12px;
+    font-weight: 700; padding: 0 6px; border-radius: 4px; cursor: pointer;
+    border: 1px solid #7c3aed30; transition: .15s;
+  }
+
+  .ann-wave::before { content: '～'; font-size: 11px; font-weight: 400; color: #16a34a; }
+  .ann-wave::after { content: '～'; font-size: 11px; font-weight: 400; color: #16a34a; }
+
+  .conn-hint {
+    display: inline-block; font-size: 11px; color: #888; background: #f5f5f8;
+    padding: 0 6px; border-radius: 3px; margin: 0 2px; cursor: default;
+  }
+
+  /* Highlight states */
+  .hl-active { background: #fef08a !important; border-radius: 2px; box-shadow: 0 0 0 1px #eab308; }
+  .hl-dim { opacity: .35; transition: opacity .2s; }
+  .panel-left.dim-others .para:not(.hl-group) .ann-circle:not(.hl-active),
+  .panel-left.dim-others .para:not(.hl-group) .ann-wave:not(.hl-active),
+  .panel-left.dim-others .para:not(.hl-group) .ann-uline:not(.hl-active),
+  .panel-left.dim-others .para:not(.hl-group) .ann-q:not(.hl-active) { opacity: .2; }
+
+  /* --- Right panel: Questions --- */
+  .panel-right {
+    flex: 1; overflow-y: auto; padding: 24px 28px; background: #fafbfc;
+  }
+  .panel-right h2 { font-size: 14px; color: #666; margin-bottom: 16px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+
+  .q-block {
+    background: #fff; border: 1px solid #e8e8f0; border-radius: 8px;
+    margin-bottom: 10px; padding: 12px 16px; cursor: pointer;
+    transition: .15s; position: relative;
+  }
+  .q-block:hover { border-color: #c0c0d8; }
+  .q-block .q-label {
+    font-size: 12px; font-weight: 700; color: #7c3aed;
+    margin-bottom: 4px; letter-spacing: .3px;
+  }
+  .q-block .q-type { font-size: 11px; color: #999; font-weight: 400; margin-left: 6px; }
+
+  .q-block .q-text { font-size: 14px; line-height: 1.6; color: #333; }
+  .q-block .q-answer { font-size: 13px; color: #dc2626; font-weight: 600; margin-top: 4px; }
+
+  .q-opt { display: block; font-size: 13px; line-height: 1.5; padding: 1px 0; color: #444; }
+  .q-opt.correct { color: #16a34a; font-weight: 600; }
+  .q-opt.wrong { color: #999; }
+  .q-opt .opt-letter { display: inline-block; width: 18px; font-weight: 600; color: #888; }
+  .q-opt.correct .opt-letter { color: #16a34a; }
+  .q-opt.wrong .opt-letter { color: #ccc; }
+
+  .q-block.hl-active { background: #fef9c3; border-color: #eab308; box-shadow: 0 2px 8px #eab30830; }
+
+  /* --- Tooltip --- */
+  .tooltip {
+    position: fixed; display: none; z-index: 1000;
+    background: #1a1a2e; color: #e8e8f0; font-size: 13px;
+    padding: 8px 12px; border-radius: 6px; max-width: 320px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.25); pointer-events: none;
+    line-height: 1.5; white-space: pre-line;
+  }
+  .tooltip .arrow { content: ''; position: absolute; top: -5px; left: 16px; border: 5px solid transparent; border-bottom-color: #1a1a2e; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>雅思阅读真经标注法</h1>
+  <span class="badge">交互演示</span>
+  <div class="legend">
+    <span><span class="legend-dot proper"></span> ○ 定位词（专有名词/数字）</span>
+    <span><span class="legend-dot synonym"></span> ～ 同义替换</span>
+    <span><span class="legend-dot answer"></span> __ 考点词/答案</span>
+    <span><span class="legend-dot qmark"></span> 【Qx】题号锚点</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ===== LEFT: ARTICLE ===== -->
+<div class="panel-left" id="articlePanel">
+
+  <!-- Paragraph A -->
+  <div class="para" id="para-A">
+    <span class="para-label">A</span>
+    <span class="conn-hint">【Q1】</span>
+    A team of archaeologists recently and unexpectedly revealed direct archaeological evidence of the involvement of medieval women in the production of manuscripts. This
+    <span class="ann-wave" data-conn="q1">challenges the widespread assumptions</span>
+    that men were the sole producers of books throughout the period in European history known as the Middle Ages (600–1500 AD). They did so by identifying particles of blue pigment in the fossilised dental plaque of a medieval woman as
+    <span class="ann-circle" data-conn="q1">lapis lazuli</span>,
+    an extremely valuable stone at the time. The findings are the first of their kind and strongly suggest it will be possible to
+    <span class="ann-wave" data-conn="q1">increase the profile</span>
+    of ancient female artists in the historical and archaeological record by analysing their dirty teeth.
+    <span class="ann-q" data-conn="q1">Q1</span>
+  </div>
+
+  <!-- Paragraph B -->
+  <div class="para" id="para-B">
+    <span class="para-label">B</span>
+    This discovery was made possible by applying technological advances in the field of archaeological science to a little-studied deposit on teeth known as tartar, which is mineralised dental plaque. In most societies today, oral hygiene practices are part of our daily routine, meaning that dental plaque is regularly removed and doesn't have a chance to build up on our teeth. This was not the case in the past. Plaque built up and mineralised over the course of people's lives. This solid deposit has unique archaeological potential. A key characteristic of dental plaque is that while it forms it has the ability to entrap a wide range of microscopic and molecular debris that enters a person's mouth. When dental plaque hardens and becomes tartar, it can entomb these particles and molecules for
+    <span class="ann-wave" data-conn="q6">hundreds or thousands of years – potentially even millions</span>.
+    <span class="ann-q" data-conn="q6">Q6</span>
+  </div>
+
+  <!-- Paragraph C -->
+  <div class="para" id="para-C">
+    <span class="para-label">C</span>
+    The majority of scholarly work conducted on ancient tartar has been centred on what people ate but, besides taking in food, the human mouth is subject to a constant influx of particles of different types directly from the environment.
+    <span class="ann-wave" data-conn="q8">
+      Tree and grass pollen, spores, cotton fibres, medicinal plants and micro-charcoal
+    </span>
+    have all been reported among the finds from this type of dental analysis.
+    <span class="ann-q" data-conn="q8">Q8</span>
+    Despite such promising evidence, the value of tartar as environmental evidence has not, so far,
+    <span class="ann-wave" data-conn="q2">been much exploited</span>.
+    <span class="ann-q" data-conn="q2">Q2</span>
+  </div>
+
+  <!-- Paragraph D -->
+  <div class="para" id="para-D">
+    <span class="para-label">D</span>
+    The team analysed the skeletal remains of a female individual, known as
+    <span class="ann-circle" data-conn="q3">B78</span>,
+    who lived in the 11th–12th century. She was buried in the grounds of a former women's monastery in Dalheim, Germany, that is in ruins today but was occupied by various religious groups for around a thousand years. They found well over 100 bright blue particles, in the form of small crystals and individual flecks, scattered throughout the tartar which was still preserved on her teeth. Her skeletal remains had not indicated anything particular about her life, besides a general indication that she probably
+    <span class="ann-wave" data-conn="q3">did not do any hard labour</span>.
+    <span class="ann-q" data-conn="q3">Q3</span>
+    The blue particles were
+    <span class="ann-wave" data-conn="q7">unlike any other discovery – firstly because of their colour, and secondly because of their sheer number</span>.
+    <span class="ann-q" data-conn="q7">Q7</span>
+  </div>
+
+  <!-- Paragraph E -->
+  <div class="para" id="para-E">
+    <span class="para-label">E</span>
+    To be sure about the nature of the particles of bright blue powder trapped in the woman's tartar, a range of microscopy techniques were used. All techniques provided the same results: the blue specks were lazurite, the blue portion of the lapis lazuli stone,
+    <span class="ann-wave" data-conn="q10">a substance more precious than
+      <span class="ann-uline" data-conn="q10">gold</span>
+    </span>
+    in Medieval Europe.
+    <span class="ann-q" data-conn="q10">Q10</span>
+    Afghanistan was the only source of the stone at the time, and the preparation of the pigment took great
+    <span class="ann-uline" data-conn="q11">skill</span>.
+    <span class="ann-q" data-conn="q11">Q11</span>
+  </div>
+
+  <!-- Paragraph F -->
+  <div class="para" id="para-F">
+    <span class="para-label">F</span>
+    So how did particles of this precious material end up deposited on this woman's teeth? A variety of reasons were possible, from painting to accidental ingestion during pigment preparation, or even the consumption of the powder as a
+    <span class="ann-wave" data-conn="q9">medicine</span>.
+    <span class="ann-q" data-conn="q9">Q9</span>
+    But the way in which the blue particles were found in her tartar – single flecks in different areas – pointed to repeated exposure, not a single intake. And creating a vivid blue pigment from lapis lazuli required an Arabic method of oil flotation that did not appear in European artists' manuals until after the 15th century. This all suggests that it's more likely that this ultramarine pigment was
+    <span class="ann-wave" data-conn="q4">brought into the region as a finished product for use by artists</span>.
+    <span class="ann-q" data-conn="q4">Q4</span>
+  </div>
+
+  <!-- Paragraph G -->
+  <div class="para" id="para-G">
+    <span class="para-label">G</span>
+    The most likely explanation, then, is that this was an artist who repeatedly used her
+    <span class="ann-wave" data-conn="q12">lips</span>
+    to make a fine
+    <span class="ann-uline" data-conn="q12">point</span>
+    on the end of her brush in order to paint intricate detail on
+    <span class="ann-uline" data-conn="q13">manuscripts</span>.
+    <span class="ann-q" data-conn="q12">Q12</span>
+    <span class="ann-q" data-conn="q13">Q13</span>
+    This finding suggests that women were more involved in the production of books throughout the Middle Ages than tends to be thought. Before the 12th century fewer than one per cent of the books that still remain can be traced to the work of women. Additionally, artists are
+    <span class="ann-wave" data-conn="q5">largely invisible in both the historic and archaeological records</span>
+    as they rarely signed their work before the 15th century and, until now, there have been no known skeletal markers directly associated with producing art.
+    <span class="ann-q" data-conn="q5">Q5</span>
+    The work strongly points to the possibility of using microscopic particles entombed in ancient tartar to track the artists of ancient times. It also suggests that it may be possible to track other 'dusty' crafts using this method and thereby reveal the invisible workforce behind many forms of art.
+  </div>
+
+</div>
+
+<!-- ===== RIGHT: QUESTIONS ===== -->
+<div class="panel-right" id="qPanel">
+  <h2>题目</h2>
+
+  <!-- Q1 -->
+  <div class="q-block" data-conn="q1">
+    <div class="q-label">Q1 <span class="q-type">Multiple Choice</span></div>
+    <div class="q-text">
+      In Paragraph <span class="ann-circle">A</span>, what does the writer say about the archaeology team's work?
+    </div>
+    <span class="q-opt wrong"><span class="opt-letter">A.</span> It confirmed what they had assumed ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">B.</span> It was hard to persuade other historians ✗</span>
+    <span class="q-opt correct"><span class="opt-letter">C.</span> It could <span class="ann-wave">reveal the importance</span> of various women in history ✓</span>
+    <span class="q-opt wrong"><span class="opt-letter">D.</span> It could help identify the number of books ✗</span>
+    <div class="q-answer">→ 同义替换: <span class="ann-wave">increase the profile</span> ↔ <span class="ann-wave">reveal the importance</span></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-block" data-conn="q2">
+    <div class="q-label">Q2 <span class="q-type">Multiple Choice</span></div>
+    <div class="q-text">
+      What point does the writer make about dental <span class="ann-wave">tartar</span> in Paragraph <span class="ann-circle">C</span>?
+    </div>
+    <span class="q-opt correct"><span class="opt-letter">A.</span> Archaeologists <span class="ann-wave">could make more use of it</span> than they do at present ✓</span>
+    <span class="q-opt wrong"><span class="opt-letter">B.</span> Some particles are more easily trapped ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">C.</span> The environment can cause it to break down ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">D.</span> Changes in diet influenced its composition ✗</span>
+    <div class="q-answer">→ 同义替换: <span class="ann-wave">not been much exploited</span> ↔ <span class="ann-wave">could make more use of</span></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-block" data-conn="q3">
+    <div class="q-label">Q3 <span class="q-type">Multiple Choice</span></div>
+    <div class="q-text">
+      What did the skeleton of <span class="ann-circle">B78</span> suggest about her?
+    </div>
+    <span class="q-opt wrong"><span class="opt-letter">A.</span> She had not been very old ✗</span>
+    <span class="q-opt correct"><span class="opt-letter">B.</span> Her life had <span class="ann-wave">not been very physically demanding</span> ✓</span>
+    <span class="q-opt wrong"><span class="opt-letter">C.</span> Her teeth had more tartar than most ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">D.</span> She had been given a grander burial ✗</span>
+    <div class="q-answer">→ 同义替换: <span class="ann-wave">did not do any hard labour</span> ↔ <span class="ann-wave">not very physically demanding</span></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-block" data-conn="q4">
+    <div class="q-label">Q4 <span class="q-type">Multiple Choice</span></div>
+    <div class="q-text">
+      What is the writer doing in Paragraph <span class="ann-circle">F</span>?
+    </div>
+    <span class="q-opt correct"><span class="opt-letter">A.</span> supporting the view that the <span class="ann-wave">blue pigment was imported</span> ✓</span>
+    <span class="q-opt wrong"><span class="opt-letter">B.</span> explaining why artists liked to use the blue pigment ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">C.</span> comparing artistic designs in different regions ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">D.</span> criticising arguments by other scientists ✗</span>
+    <div class="q-answer">→ 同义替换: <span class="ann-wave">brought into the region as a finished product</span> ↔ <span class="ann-wave">pigment was imported</span></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-block" data-conn="q5">
+    <div class="q-label">Q5 <span class="q-type">Multiple Choice</span></div>
+    <div class="q-text">
+      What problem does the writer highlight about medieval artists in Paragraph <span class="ann-circle">G</span>?
+    </div>
+    <span class="q-opt wrong"><span class="opt-letter">A.</span> poor facilities available to females ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">B.</span> small number of projects available ✗</span>
+    <span class="q-opt wrong"><span class="opt-letter">C.</span> difficulties locating their skeletal remains ✗</span>
+    <span class="q-opt correct"><span class="opt-letter">D.</span> the <span class="ann-wave">lack of evidence for their contribution</span> ✓</span>
+    <div class="q-answer">→ 同义替换: <span class="ann-wave">largely invisible in the records</span> ↔ <span class="ann-wave">lack of evidence</span></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-block" data-conn="q6">
+    <div class="q-label">Q6 <span class="q-type">Matching Information → Para <span class="ann-circle">B</span></span></div>
+    <div class="q-text">
+      reference to the possible <span class="ann-wave">length of time</span> that tartar can preserve particles from the air
+    </div>
+    <div class="q-answer">→ <span class="ann-wave">hundreds or thousands of years – potentially even millions</span></div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-block" data-conn="q7">
+    <div class="q-label">Q7 <span class="q-type">Matching Information → Para <span class="ann-circle">D</span></span></div>
+    <div class="q-text">
+      two reasons why the particles were <span class="ann-wave">unique</span>
+    </div>
+    <div class="q-answer">→ <span class="ann-wave">firstly because of their colour, and secondly because of their sheer number</span></div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-block" data-conn="q8">
+    <div class="q-label">Q8 <span class="q-type">Matching Information → Para <span class="ann-circle">C</span></span></div>
+    <div class="q-text">
+      various examples of the types of <span class="ann-wave">particle</span> that can be discovered in old teeth
+    </div>
+    <div class="q-answer">→ <span class="ann-wave">pollen, spores, fibres, plants, micro-charcoal</span></div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-block" data-conn="q9">
+    <div class="q-label">Q9 <span class="q-type">Matching Information → Para <span class="ann-circle">F</span></span></div>
+    <div class="q-text">
+      a suggestion that the blue pigment might have been used to <span class="ann-wave">cure illness</span>
+    </div>
+    <div class="q-answer">→ <span class="ann-wave">consumption of the powder as a medicine</span></div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-block" data-conn="q10">
+    <div class="q-label">Q10 <span class="q-type">Summary Completion</span></div>
+    <div class="q-text">
+      In medieval times, even <span class="ann-uline">gold</span> was not as valuable.
+    </div>
+    <div class="q-answer">答案: <span class="ann-uline">gold</span> ← more <span class="ann-uline">precious than</span></div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-block" data-conn="q11">
+    <div class="q-label">Q11 <span class="q-type">Summary Completion</span></div>
+    <div class="q-text">
+      a lot of <span class="ann-uline">skill</span> was needed to make the pigment
+    </div>
+    <div class="q-answer">答案: <span class="ann-uline">skill</span> ← took great <span class="ann-uline">skill</span></div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-block" data-conn="q12">
+    <div class="q-label">Q12 <span class="q-type">Summary Completion</span></div>
+    <div class="q-text">
+      make a <span class="ann-uline">point</span> on their brushes using their mouths
+    </div>
+    <div class="q-answer">答案: <span class="ann-uline">point</span> ← make a fine <span class="ann-uline">point</span></div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-block" data-conn="q13">
+    <div class="q-label">Q13 <span class="q-type">Summary Completion</span></div>
+    <div class="q-text">
+      fine features needed for <span class="ann-uline">manuscripts</span> and books
+    </div>
+    <div class="q-answer">答案: <span class="ann-uline">manuscripts</span> ← intricate detail on <span class="ann-uline">manuscripts</span></div>
+  </div>
+
+</div>
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"><div class="arrow"></div></div>
+
+<script>
+(function() {
+  const article = document.getElementById('articlePanel');
+  const qPanel = document.getElementById('qPanel');
+  const tooltip = document.getElementById('tooltip');
+  let activeConn = null;
+
+  const connLabels = {
+    q1: 'Q1 | 同义替换: increase the profile ↔ reveal the importance',
+    q2: 'Q2 | 同义替换: not been much exploited ↔ could make more use of',
+    q3: 'Q3 | 同义替换: did not do any hard labour ↔ not very physically demanding',
+    q4: 'Q4 | 同义替换: brought in as finished product ↔ pigment was imported',
+    q5: 'Q5 | 同义替换: largely invisible ↔ lack of evidence for contribution',
+    q6: 'Q6 | 长度: hundreds or thousands of years → length of time',
+    q7: 'Q7 | 独特原因: firstly colour, secondly number → unique',
+    q8: 'Q8 | 颗粒类型列举: pollen, spores, fibres... → types of particle',
+    q9: 'Q9 | 药物: medicine → cure illness',
+    q10: 'Q10 | 答案: gold ← more precious than gold',
+    q11: 'Q11 | 答案: skill ← took great skill',
+    q12: 'Q12 | 答案: point ← make a fine point',
+    q13: 'Q13 | 答案: manuscripts ← intricate detail on manuscripts',
+  };
+
+  // Collect all annotation elements by connection
+  const groups = {};
+  document.querySelectorAll('[data-conn]').forEach(el => {
+    const c = el.dataset.conn;
+    if (!groups[c]) groups[c] = [];
+    groups[c].push(el);
+  });
+
+  function clearActive() {
+    if (activeConn) {
+      groups[activeConn].forEach(el => el.classList.remove('hl-active'));
+    }
+    document.querySelectorAll('.q-block.hl-active').forEach(el => el.classList.remove('hl-active'));
+    article.classList.remove('dim-others');
+    activeConn = null;
+  }
+
+  function activate(conn) {
+    clearActive();
+    if (!conn || !groups[conn]) return;
+    activeConn = conn;
+    groups[conn].forEach(el => el.classList.add('hl-active'));
+    document.querySelectorAll(`.q-block[data-conn="${conn}"]`).forEach(el => el.classList.add('hl-active'));
+    // Dim other content
+    article.classList.add('dim-others');
+  }
+
+  // Click on any annotation element
+  document.addEventListener('click', function(e) {
+    const ann = e.target.closest('[data-conn]');
+    if (!ann) { clearActive(); return; }
+    const conn = ann.dataset.conn;
+    if (activeConn === conn) { clearActive(); }
+    else { activate(conn); }
+  });
+
+  // Hover: dim others temporarily, show tooltip
+  document.addEventListener('mouseover', function(e) {
+    const ann = e.target.closest('[data-conn]');
+    if (ann && ann.dataset.conn) {
+      const conn = ann.dataset.conn;
+      const label = connLabels[conn] || conn;
+      tooltip.style.display = 'block';
+      tooltip.textContent = label;
+      const rect = ann.getBoundingClientRect();
+      let top = rect.bottom + 8;
+      let left = rect.left + (rect.width / 2) - 60;
+      if (left < 8) left = 8;
+      if (top + 30 > window.innerHeight) top = rect.top - 38;
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+    }
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest('[data-conn]')) {
+      tooltip.style.display = 'none';
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -15,13 +15,13 @@ export function AboutTeaser() {
           关于宁致教育
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 leading-tight">
-          一个花了二十万不出分的孩子，
+          我们的故事，我们只写开头，
           <br className="hidden sm:block" />
-          让我们决定做一间"不一样"的机构
+          其他留给别人去说
         </h2>
         <p className="text-neutral-600 leading-relaxed max-w-xl mx-auto text-base sm:text-lg">
-          我们见过机构和顾问收了钱就消失，见过老师成了替罪羊。
-          宁致选择了另一条路：敢跟家长说"课先少上点"，不以课时消耗定价，以目标达成为准。
+          我们不向学生和家长贩卖焦虑，只讲事实；我们不消耗老师精力，只作后盾。
+          用真实和结果说话——没有黑盒感、没有无良课消、没有过度宣传。
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link

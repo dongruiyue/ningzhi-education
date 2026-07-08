@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思阅读真经标注法 — 动态解题演示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI','PingFang SC',system-ui,sans-serif; background: #f0f1f4; color: #1a1a2e; height: 100vh; overflow: hidden; }
+
+  /* --- Top bar --- */
+  .topbar {
+    background: #1a1a2e; color: #e8e8f0; padding: 10px 24px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15); z-index: 10;
+  }
+  .topbar h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
+  .topbar .step-label { font-size: 12px; color: #94a3b8; margin-left: 4px; }
+  .topbar .progress { flex:1; height: 4px; background: #334155; border-radius: 2px; max-width: 300px; }
+  .topbar .progress-fill { height: 100%; background: #e94560; border-radius: 2px; transition: width .4s; }
+  .topbar .phase {
+    margin-left: auto; font-size: 11px; padding: 2px 10px;
+    border-radius: 10px; background: #334155; color: #cbd5e1;
+  }
+
+  /* --- Main area --- */
+  .main { display: flex; height: calc(100vh - 52px); }
+
+  /* --- Left: Article --- */
+  .left { flex: 1.1; overflow-y: auto; padding: 16px 24px 24px; background: #fff; border-right: 1px solid #e2e8f0; }
+  .left .article-title { font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 12px; letter-spacing: .3px; }
+  .para { margin-bottom: 14px; line-height: 1.7; font-size: 13.5px; text-align: justify; position: relative; padding-left: 28px; transition: .25s; }
+  .para .pl { position: absolute; left: 0; top: 0; font-weight: 700; font-size: 12px; color: #94a3b8; }
+  .para.hl { background: #fef9c3; border-radius: 4px; padding: 6px 16px 6px 44px; margin: 0 -16px 14px; box-shadow: 0 0 0 2px #eab30840; }
+  .para.dim { opacity: .2; }
+  .para .tag {
+    display: inline-block; font-size: 10px; font-weight: 700; padding: 0 5px;
+    border-radius: 3px; vertical-align: text-top; margin-right: 1px;
+    background: #eef2ff; color: #6366f1; border: 1px solid #c7d2fe;
+  }
+
+  /* Annotations in article */
+  .ann-o { color: #2563eb; font-weight: 600; border-bottom: 2px solid #2563eb; cursor: default; transition: .15s; }
+  .ann-o::before { content: '○'; font-size: 10px; font-weight: 400; }
+  .ann-o::after { content: '○'; font-size: 10px; font-weight: 400; }
+  .ann-w { color: #16a34a; border-bottom: 2px dashed #16a34a; cursor: default; transition: .15s; }
+  .ann-w::before { content: '～'; font-size: 10px; color: #16a34a; }
+  .ann-w::after { content: '～'; font-size: 10px; color: #16a34a; }
+  .ann-u { color: #dc2626; font-weight: 600; border-bottom: 2px solid #dc2626; cursor: default; transition: .15s; }
+  .ann-u::after { animation: blink 1.2s infinite; }
+
+  /* --- Right: Steps --- */
+  .right {
+    flex: 1; overflow-y: auto; padding: 20px 24px 24px; background: #f8fafc;
+    display: flex; flex-direction: column;
+  }
+  .right .step-header { margin-bottom: 14px; }
+  .right .step-header .step-num { font-size: 12px; color: #94a3b8; font-weight: 600; }
+  .right .step-header h2 { font-size: 18px; font-weight: 700; color: #1e293b; margin-top: 2px; }
+  .right .step-header .sub { font-size: 13px; color: #64748b; margin-top: 4px; line-height: 1.6; }
+
+  .step-body { flex:1; }
+  .q-text-display { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; line-height: 1.7; }
+
+  .opts { margin-bottom: 12px; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 8px 12px; border-radius: 6px; margin-bottom: 4px;
+    background: #fff; border: 1px solid #e2e8f0; cursor: pointer; transition: .15s;
+    font-size: 13.5px; line-height: 1.5;
+  }
+  .opt:hover { border-color: #94a3b8; }
+  .opt .ol { font-weight: 700; color: #94a3b8; min-width: 20px; }
+  .opt.revealed { border-width: 2px; }
+  .opt.correct { background: #f0fdf4; border-color: #86efac; }
+  .opt.correct .ol { color: #16a34a; }
+  .opt.wrong { background: #fef2f2; border-color: #fca5a5; }
+  .opt.wrong .ol { color: #dc2626; }
+  .opt .reason { display: none; font-size: 12px; color: #64748b; margin-top: 4px; padding-top: 4px; border-top: 1px dashed #e2e8f0; }
+  .opt.revealed .reason { display: block; }
+
+  .syn-box {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 14px; margin-top: 8px;
+    font-size: 13px; line-height: 1.6;
+  }
+  .syn-box strong { color: #2563eb; }
+  .syn-arr { font-size: 18px; color: #94a3b8; margin: 0 8px; vertical-align: middle; }
+
+  /* Matching scanning strategy */
+  .scan-box {
+    background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 8px; padding: 10px 14px; margin-top: 8px;
+    font-size: 13px; line-height: 1.6;
+  }
+  .scan-box .scan-kw { background: #fef9c3; padding: 0 4px; border-radius: 2px; font-weight: 600; }
+  .scan-box .elim { color: #64748b; }
+
+  /* Summary */
+  .summary-box {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 10px 14px; margin-top: 8px;
+    font-size: 13px; line-height: 1.6;
+  }
+
+  /* Navigation */
+  .nav { display: flex; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
+  .nav button {
+    padding: 8px 20px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: .15s; background: #e2e8f0; color: #475569;
+  }
+  .nav button:hover { background: #cbd5e1; }
+  .nav button.primary { background: #2563eb; color: #fff; }
+  .nav button.primary:hover { background: #1d4ed8; }
+  .nav button:disabled { opacity: .35; cursor: not-allowed; }
+  .nav .spacer { flex:1; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+  /* Phase badges */
+  .phase-detail { background: #2563eb20; color: #2563eb; }
+  .phase-detail .phase { background: #2563eb; color: #fff; }
+  .phase-summary { background: #f59e0b20; color: #92400e; }
+  .phase-summary .phase { background: #f59e0b; color: #fff; }
+  .phase-matching { background: #7c3aed20; color: #6d28d9; }
+  .phase-matching .phase { background: #7c3aed; color: #fff; }
+
+  .summary-table { width:100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .summary-table th { background: #f1f5f9; padding: 6px 10px; text-align: left; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
+  .summary-table td { padding: 5px 10px; border-bottom: 1px solid #f1f5f9; }
+  .summary-table .mc { color: #2563eb; font-weight: 600; }
+  .summary-table .su { color: #dc2626; font-weight: 600; }
+  .summary-table .ma { color: #7c3aed; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <h1>雅思阅读真经标注法</h1>
+  <span class="step-label" id="stepLabel">—</span>
+  <div class="progress"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <span class="phase" id="phaseBadge">准备</span>
+</div>
+
+<div class="main">
+
+<!-- LEFT: ARTICLE -->
+<div class="left" id="articlePanel">
+  <div class="article-title">The forgotten role of women in medieval arts</div>
+  <div class="para" id="pA">
+    <span class="pl">A</span>
+    A team of archaeologists recently and unexpectedly revealed direct archaeological evidence of the involvement of medieval women in the production of manuscripts. This <span class="ann-w">challenges the widespread assumptions</span> that men were the sole producers of books throughout the Middle Ages (600–1500 AD). They did so by identifying particles of blue pigment in the fossilised dental plaque of a medieval woman as <span class="ann-o">lapis lazuli</span>, an extremely valuable stone at the time. The findings strongly suggest it will be possible to <span class="ann-w">increase the profile</span> of ancient female artists in the historical and archaeological record by analysing their dirty teeth. <span class="tag">Q1</span>
+  </div>
+  <div class="para" id="pB">
+    <span class="pl">B</span>
+    This discovery was made possible by applying technological advances to a little-studied deposit on teeth known as tartar, which is mineralised dental plaque. Plaque built up and mineralised over the course of people's lives. When dental plaque hardens and becomes tartar, it can entomb these particles and molecules for <span class="ann-w">hundreds or thousands of years – potentially even millions</span>. <span class="tag">Q6</span>
+  </div>
+  <div class="para" id="pC">
+    <span class="pl">C</span>
+    The majority of scholarly work on ancient tartar has been centred on what people ate but, besides food, the human mouth is subject to a constant influx of particles of different types from the environment. <span class="ann-w">Tree and grass pollen, spores, cotton fibres, medicinal plants and micro-charcoal</span> have all been reported among finds from this type of dental analysis. <span class="tag">Q8</span> Despite such promising evidence, the value of tartar as environmental evidence has not, so far, <span class="ann-w">been much exploited</span>. <span class="tag">Q2</span>
+  </div>
+  <div class="para" id="pD">
+    <span class="pl">D</span>
+    The team analysed the skeletal remains of a female individual, known as <span class="ann-o">B78</span>, who lived in the 11th–12th century. Her skeletal remains had not indicated anything particular about her life, besides a general indication that she probably <span class="ann-w">did not do any hard labour</span>. <span class="tag">Q3</span> The blue particles were <span class="ann-w">unlike any other discovery – firstly because of their colour, and secondly because of their sheer number</span>. <span class="tag">Q7</span>
+  </div>
+  <div class="para" id="pE">
+    <span class="pl">E</span>
+    To be sure about the blue powder trapped in the woman's tartar, a range of microscopy techniques were used. The blue specks were lazurite, the blue portion of the lapis lazuli stone, <span class="ann-w">a substance more precious than</span> <span class="ann-u">gold</span> in Medieval Europe. <span class="tag">Q10</span> Afghanistan was the only source, and the preparation of the pigment took great <span class="ann-u">skill</span>. <span class="tag">Q11</span>
+  </div>
+  <div class="para" id="pF">
+    <span class="pl">F</span>
+    A variety of reasons were possible, from painting to accidental ingestion, or even the consumption of the powder as a <span class="ann-w">medicine</span>. <span class="tag">Q9</span> The way the blue particles were found – single flecks in different areas – pointed to repeated exposure, not a single intake. This suggests it's more likely that this ultramarine pigment was <span class="ann-w">brought into the region as a finished product for use by artists</span>. <span class="tag">Q4</span>
+  </div>
+  <div class="para" id="pG">
+    <span class="pl">G</span>
+    The most likely explanation: this was an artist who repeatedly used her <span class="ann-w">lips</span> to make a fine <span class="ann-u">point</span> on the end of her brush in order to paint intricate detail on <span class="ann-u">manuscripts</span>. <span class="tag">Q12</span> <span class="tag">Q13</span> Additionally, artists are <span class="ann-w">largely invisible in both the historic and archaeological records</span> as they rarely signed their work. <span class="tag">Q5</span>
+  </div>
+</div>
+
+<!-- RIGHT: STEPS -->
+<div class="right" id="stepPanel">
+  <div class="step-header" id="stepHeader">
+    <div class="step-num" id="stepNum">—</div>
+    <h2 id="stepTitle">准备</h2>
+    <div class="sub" id="stepSub">点击「下一步」开始真经解题流程</div>
+  </div>
+  <div class="step-body" id="stepBody"></div>
+  <div class="nav">
+    <button id="prevBtn" onclick="goStep(-1)" disabled>← 上一步</button>
+    <div class="spacer"></div>
+    <button id="nextBtn" class="primary" onclick="goStep(1)">下一步 →</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ===== STEP DATA =====
+const steps = [
+  // --- 0: Start ---
+  {
+    id: 'intro',
+    num: '',
+    title: '题型分析 + 确定优先序',
+    sub: '拿到题目第一步：识别题型，决定先做哪些、后做哪些',
+    phase: '准备',
+    highlight: [],
+    dim: false,
+    render() {
+      return `
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;line-height:1.7;font-size:13.5px;">
+          <p><strong>真经口诀：</strong>阅读先看题，定位快寻觅。两种题后做，优先细节题。同义替换多，单词有灵犀。</p>
+          <hr style="margin:10px 0;border-color:#e2e8f0;">
+          <p><strong>题型识别 + 确定优先序</strong></p>
+          <table style="width:100%;border-collapse:collapse;margin-top:6px;font-size:13px;">
+            <tr style="background:#f1f5f9;"><th style="padding:5px 8px;text-align:left;border-bottom:2px solid #e2e8f0;">题型</th><th style="padding:5px 8px;text-align:left;border-bottom:2px solid #e2e8f0;">题号</th><th style="padding:5px 8px;text-align:left;border-bottom:2px solid #e2e8f0;">顺序</th></tr>
+            <tr><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Multiple Choice</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Q1–Q5</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;color:#2563eb;font-weight:600;">优先 ✅</td></tr>
+            <tr><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Summary Completion</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Q10–Q13</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;color:#dc2626;font-weight:600;">优先 ✅</td></tr>
+            <tr><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Matching Information</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;">Q6–Q9</td><td style="padding:4px 8px;border-bottom:1px solid #f1f5f9;color:#7c3aed;font-weight:600;">后做 ⏳</td></tr>
+          </table>
+          <p style="margin-top:8px;color:#64748b;">先做 Q1–Q5（选择题）和 Q10–Q13（摘要填空），熟悉文章内容后再做 Q6–Q9（段落信息匹配）。</p>
+        </div>
+      `;
+    }
+  },
+  // --- 1: Q1 ---
+  {
+    id: 'q1', num: '1 / 13',
+    title: 'Q1 · Multiple Choice',
+    sub: '定位 Paragraph A，找同义替换，排除法筛选',
+    phase: '细节题 — Multiple Choice',
+    highlight: ['pA'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          In Paragraph A, what does the writer say about the archaeology team's work?
+        </div>
+        <div class="opts">
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">A.</span>
+            <div>It confirmed what they had assumed when they started it.
+            <div class="reason">✗ 与原文矛盾 — 原文第一句说 challenges the widespread assumptions，选项说 confirmed</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">B.</span>
+            <div>It was hard to persuade other historians about their findings.
+            <div class="reason">✗ 原文没提 — A段根本没有提到"说服其他历史学家"</div></div>
+          </div>
+          <div class="opt correct" onclick="reveal(this)">
+            <span class="ol">C.</span>
+            <div>It could reveal the importance of various women in history.
+            <div class="reason">✓ 同义替换 — 原文末句 increase the profile of ↔ reveal the importance</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">D.</span>
+            <div>It could help identify the number of books written in the Middle Ages.
+            <div class="reason">✗ 答非所问 — 文章说的是分析牙齿找到女性艺术家，不是去数书</div></div>
+          </div>
+        </div>
+        <div class="syn-box">
+          <strong>同义替换验证：</strong><br>
+          原文：⋯it will be possible to <strong>increase the profile</strong> of ancient female artists<br>
+          题目：It could <strong>reveal the importance</strong> of various women in history<br>
+          <span style="display:flex;align-items:center;gap:4px;margin-top:4px;">
+            <span style="background:#fef08a;padding:0 4px;border-radius:2px;">increase the profile</span>
+            <span class="syn-arr">↔</span>
+            <span style="background:#fef08a;padding:0 4px;border-radius:2px;">reveal the importance</span>
+          </span>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:#64748b;">💡 点击每个选项查看排除理由</div>
+      `;
+    }
+  },
+  // --- 2: Q2 ---
+  {
+    id: 'q2', num: '2 / 13',
+    title: 'Q2 · Multiple Choice',
+    sub: '定位 Paragraph C，注意段落末句的否定表达',
+    phase: '细节题 — Multiple Choice',
+    highlight: ['pC'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          What point does the writer make about dental tartar in Paragraph C?
+        </div>
+        <div class="opts">
+          <div class="opt correct" onclick="reveal(this)">
+            <span class="ol">A.</span>
+            <div>Archaeologists could make more use of it than they do at present.
+            <div class="reason">✓ 同义替换 — 末句 the value of tartar⋯has not⋯been much exploited ↔ could make more use of</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">B.</span>
+            <div>Some particles are more easily trapped in it than others.
+            <div class="reason">✗ 原文没提 — B段提到 entrap a wide range of debris，但没说某些更容易</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">C.</span>
+            <div>The environment can cause it to break down.
+            <div class="reason">✗ 原文没提 — C段没说牙结石会因环境分解</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">D.</span>
+            <div>Changes in people's diet have influenced its composition.
+            <div class="reason">✗ 原文没提 — C段说研究集中在饮食（centred on what people ate），但没说饮食改变了成分</div></div>
+          </div>
+        </div>
+        <div class="syn-box">
+          <strong>同义替换验证：</strong><br>
+          原文：the value of tartar⋯has not⋯<strong>been much exploited</strong><br>
+          题目：<strong>could make more use of</strong> it than they do at present
+        </div>
+      `;
+    }
+  },
+  // --- 3: Q3 ---
+  {
+    id: 'q3', num: '3 / 13',
+    title: 'Q3 · Multiple Choice',
+    sub: '定位 D段 B78 骨骼信息，找"没做重体力活"',
+    phase: '细节题 — Multiple Choice',
+    highlight: ['pD'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          What did the skeleton of B78 suggest about her?
+        </div>
+        <div class="opts">
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">A.</span>
+            <div>She had not been very old when she died.
+            <div class="reason">✗ 原文没提 — D段没有提及她的年龄</div></div>
+          </div>
+          <div class="opt correct" onclick="reveal(this)">
+            <span class="ol">B.</span>
+            <div>Her life had not been very physically demanding.
+            <div class="reason">✓ 同义替换 — did not do any hard labour ↔ not very physically demanding</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">C.</span>
+            <div>Her teeth had more tartar than most skeletons of that age.
+            <div class="reason">✗ 原文没提 — D段没有与其他骨架比较牙结石量</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">D.</span>
+            <div>She had been given a grander burial than other women of her time.
+            <div class="reason">✗ 原文没提 — D段没有提及葬礼规格</div></div>
+          </div>
+        </div>
+        <div class="syn-box">
+          <strong>同义替换验证：</strong><br>
+          原文：she probably <strong>did not do any hard labour</strong><br>
+          题目：not been very <strong>physically demanding</strong>
+        </div>
+      `;
+    }
+  },
+  // --- 4: Q4 ---
+  {
+    id: 'q4', num: '4 / 13',
+    title: 'Q4 · Multiple Choice',
+    sub: '定位 F段，看作者在段中的论证动作',
+    phase: '细节题 — Multiple Choice',
+    highlight: ['pF'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          What is the writer doing in Paragraph F?
+        </div>
+        <div class="opts">
+          <div class="opt correct" onclick="reveal(this)">
+            <span class="ol">A.</span>
+            <div>supporting the team's view that the blue pigment was imported
+            <div class="reason">✓ 同义替换 — 末句 brought into the region as a finished product ↔ was imported</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">B.</span>
+            <div>explaining why artists in Europe liked to use the blue pigment
+            <div class="reason">✗ 答非所问 — 作者分析的是来源（进口成品），不是喜好</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">C.</span>
+            <div>comparing artistic designs in different parts of the world
+            <div class="reason">✗ 原文没提 — F段没有做跨地区比较</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">D.</span>
+            <div>criticising arguments put forward by other scientists
+            <div class="reason">✗ 原文没提 — F段没有批评任何人，是逻辑推理</div></div>
+          </div>
+        </div>
+        <div class="syn-box">
+          <strong>同义替换验证：</strong><br>
+          原文：this ultramarine pigment was <strong>brought into the region as a finished product</strong><br>
+          题目：the view that the blue pigment <strong>was imported</strong>
+        </div>
+      `;
+    }
+  },
+  // --- 5: Q5 ---
+  {
+    id: 'q5', num: '5 / 13',
+    title: 'Q5 · Multiple Choice',
+    sub: '定位 G段，找"艺术家在历史记录中不可见"',
+    phase: '细节题 — Multiple Choice',
+    highlight: ['pG'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          What problem does the writer highlight about medieval artists in Paragraph G?
+        </div>
+        <div class="opts">
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">A.</span>
+            <div>the poor facilities available to females in the profession
+            <div class="reason">✗ 原文没提 — G段没说设施问题</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">B.</span>
+            <div>the small number of projects available to them
+            <div class="reason">✗ 原文没提 — G段没说项目数量少</div></div>
+          </div>
+          <div class="opt wrong" onclick="reveal(this)">
+            <span class="ol">C.</span>
+            <div>the difficulties locating their skeletal remains for study
+            <div class="reason">✗ 答非所问 — 原文说 no known skeletal markers（没有已知骨骼标记），不等于定位困难</div></div>
+          </div>
+          <div class="opt correct" onclick="reveal(this)">
+            <span class="ol">D.</span>
+            <div>the lack of evidence for their contribution to books
+            <div class="reason">✓ 同义替换 — largely invisible / rarely signed / &lt;1% traced → lack of evidence</div></div>
+          </div>
+        </div>
+        <div class="syn-box">
+          <strong>同义替换验证：</strong><br>
+          原文：artists are <strong>largely invisible</strong> in both the historic and archaeological records<br>
+          题目：the <strong>lack of evidence</strong> for their contribution to books
+        </div>
+      `;
+    }
+  },
+  // --- 6: Q10 ---
+  {
+    id: 'q10', num: '6 / 13',
+    title: 'Q10 · Summary Completion',
+    sub: '摘要填空顺序出题，先看标题定位 E段',
+    phase: '细节题 — Summary',
+    highlight: ['pE'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Summary 节选：</strong><br>
+          A blue pigment used to create artworks in Europe in the Middle Ages was derived from a stone called lapis lazuli. In medieval times, even <strong style="font-size:16px;color:#dc2626;">______</strong> was not as valuable.
+        </div>
+        <div class="summary-box">
+          <strong>解题流程：</strong>
+          <ol style="margin:4px 0 0 16px;">
+            <li><strong>预判词性：</strong>名词（一种贵重物品）</li>
+            <li><strong>定位：</strong>摘要标题提到 lapis lazuli → 定位到 E段</li>
+            <li><strong>原文提取：</strong></li>
+          </ol>
+          <div style="background:#fff;border:1px solid #fed7aa;border-radius:6px;padding:8px 12px;margin:6px 0;">
+            E段：a substance more <strong>precious than</strong> <span style="background:#fef08a;padding:0 4px;font-weight:700;color:#dc2626;">gold</span> in Medieval Europe
+          </div>
+          <p style="font-size:13px;">not as valuable ↔ more precious than，even <strong>gold</strong> was not as valuable → 语法正确 ✓</p>
+        </div>
+      `;
+    }
+  },
+  // --- 7: Q11 ---
+  {
+    id: 'q11', num: '7 / 13',
+    title: 'Q11 · Summary Completion',
+    sub: '继续看 E段，找"需要大量___"',
+    phase: '细节题 — Summary',
+    highlight: ['pE'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Summary 节选：</strong><br>
+          Lapis lazuli could only be found in Afghanistan and a lot of <strong style="font-size:16px;color:#dc2626;">______</strong> was needed to make the pigment from the stone.
+        </div>
+        <div class="summary-box">
+          <strong>解题流程：</strong>
+          <ol style="margin:4px 0 0 16px;">
+            <li><strong>预判词性：</strong>名词（不可数）</li>
+            <li><strong>定位：</strong>接上题继续读 E段后半部分</li>
+            <li><strong>原文提取：</strong></li>
+          </ol>
+          <div style="background:#fff;border:1px solid #fed7aa;border-radius:6px;padding:8px 12px;margin:6px 0;">
+            E段：Afghanistan was the only source⋯the preparation of the pigment took great <span style="background:#fef08a;padding:0 4px;font-weight:700;color:#dc2626;">skill</span>
+          </div>
+          <p style="font-size:13px;">"a lot of ⋯ was needed" ↔ "took great"，答案 <strong>skill</strong> ✓</p>
+        </div>
+      `;
+    }
+  },
+  // --- 8: Q12 ---
+  {
+    id: 'q12', num: '8 / 13',
+    title: 'Q12 · Summary Completion',
+    sub: '摘要转到 G段，描述画家用嘴唇舔笔尖',
+    phase: '细节题 — Summary',
+    highlight: ['pG'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Summary 节选：</strong><br>
+          Artists often had to make a <strong style="font-size:16px;color:#dc2626;">______</strong> on their brushes using their mouths, which then enabled them to produce the fine features needed for⋯
+        </div>
+        <div class="summary-box">
+          <strong>解题流程：</strong>
+          <ol style="margin:4px 0 0 16px;">
+            <li><strong>预判词性：</strong>可数名词单数（make a ___）</li>
+            <li><strong>定位：</strong>关键词 using their mouths / brushes → G段</li>
+            <li><strong>原文提取：</strong></li>
+          </ol>
+          <div style="background:#fff;border:1px solid #fed7aa;border-radius:6px;padding:8px 12px;margin:6px 0;">
+            G段：⋯used her lips to make a fine <span style="background:#fef08a;padding:0 4px;font-weight:700;color:#dc2626;">point</span> on the end of her brush
+          </div>
+          <p style="font-size:13px;">"make a point" 语法正确，ONE WORD ✓</p>
+        </div>
+      `;
+    }
+  },
+  // --- 9: Q13 ---
+  {
+    id: 'q13', num: '9 / 13',
+    title: 'Q13 · Summary Completion',
+    sub: '摘要同一段后半句，找 manuscripts',
+    phase: '细节题 — Summary',
+    highlight: ['pG'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Summary 节选：</strong><br>
+          ⋯produce the fine features needed for <strong style="font-size:16px;color:#dc2626;">______</strong> and books
+        </div>
+        <div class="summary-box">
+          <strong>解题流程：</strong>
+          <ol style="margin:4px 0 0 16px;">
+            <li><strong>预判词性：</strong>名词（与 books 并列）</li>
+            <li><strong>定位：</strong>接上题，同一句的后半部分</li>
+            <li><strong>原文提取：</strong></li>
+          </ol>
+          <div style="background:#fff;border:1px solid #fed7aa;border-radius:6px;padding:8px 12px;margin:6px 0;">
+            G段：⋯paint intricate detail on <span style="background:#fef08a;padding:0 4px;font-weight:700;color:#dc2626;">manuscripts</span>
+          </div>
+          <p style="font-size:13px;">原文原词 manuscripts，复数形式与题干一致 ✓</p>
+        </div>
+      `;
+    }
+  },
+  // --- 10: Transition to Matching ---
+  {
+    id: 'transition',
+    num: '',
+    title: '细节题全部完成 → 开始段落信息匹配',
+    sub: 'Q1–Q5 和 Q10–Q13 已做完，对文章内容有了基本了解。现在回到 Q6–Q9。',
+    phase: '切换',
+    highlight: [],
+    dim: false,
+    render() {
+      return `
+        <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:8px;padding:14px 18px;line-height:1.7;font-size:13.5px;">
+          <p><strong>两种题后做 — 现在是时候做段落信息匹配了</strong></p>
+          <p style="margin-top:6px;color:#475569;">做完所有细节题后，你已经对文章内容有了整体感觉。现在做段落信息匹配，可以快速用排除法缩小范围：</p>
+          <ol style="margin:6px 0 0 16px;color:#475569;">
+            <li>记住题目中的关键词</li>
+            <li>逐段扫描，找到匹配信息</li>
+            <li>用过的段落排除掉</li>
+            <li>每个段落通常只匹配一次</li>
+          </ol>
+          <p style="margin-top:8px;font-weight:600;color:#7c3aed;">点击「下一步」开始逐题扫描</p>
+        </div>
+      `;
+    }
+  },
+  // --- 11: Q6 Matching ---
+  {
+    id: 'q6', num: '10 / 13',
+    title: 'Q6 · 段落信息匹配',
+    sub: '扫描关键词：time / years / 时间长度 → B段',
+    phase: '段落匹配 — 后做',
+    highlight: ['pB'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Find in which paragraph:</strong><br>
+          reference to the possible <strong>length of time</strong> that tartar can preserve particles from the air
+        </div>
+        <div class="scan-box">
+          <strong>🔍 扫描策略：</strong>
+          <p style="margin-top:4px;">找 <span class="scan-kw">时间长度</span> 相关的表达——年份、数字、世纪。快速扫过 A→G：</p>
+          <ul style="margin:4px 0 0 16px;list-style:none;padding:0;">
+            <li style="padding:2px 0;color:#64748b;">✗ A段：无时间长度信息</li>
+            <li style="padding:2px 0;font-weight:600;background:#fef9c3;padding:2px 4px;border-radius:2px;">✓ B段末句：<strong>"hundreds or thousands of years – potentially even millions"</strong></li>
+            <li style="padding:2px 0;color:#64748b;">✗ C段：无</li>
+            <li style="padding:2px 0;color:#64748b;">✗ D段：11th–12th century（具体时期，但不是在说 tartar 的保存时长）</li>
+            <li style="padding:2px 0;color:#64748b;">✗ E–G段：无</li>
+          </ul>
+        </div>
+        <div class="syn-box" style="margin-top:6px;">
+          <strong>匹配依据：</strong><br>
+          "possible <strong>length of time</strong>" ↔ "<strong>hundreds or thousands of years – potentially even millions</strong>"<br>
+          同时出现 <strong>tartar preserve particles</strong>（原文：entomb these particles and molecules）→ 完全对应
+        </div>
+      `;
+    }
+  },
+  // --- 12: Q7 Matching ---
+  {
+    id: 'q7', num: '11 / 13',
+    title: 'Q7 · 段落信息匹配',
+    sub: '扫描关键词：two reasons / unique / firstly…secondly → D段',
+    phase: '段落匹配 — 后做',
+    highlight: ['pD'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Find in which paragraph:</strong><br>
+          two reasons why the particles that the team found in teeth were <strong>unique</strong>
+        </div>
+        <div class="scan-box">
+          <strong>🔍 扫描策略：</strong>
+          <p style="margin-top:4px;">找 <span class="scan-kw">独特</span> + <span class="scan-kw">列举结构</span>（firstly / secondly / two reasons）：</p>
+          <ul style="margin:4px 0 0 16px;list-style:none;padding:0;">
+            <li style="padding:2px 0;color:#64748b;">✗ A段：没提独特</li>
+            <li style="padding:2px 0;color:#64748b;">✗ B段：没提独特</li>
+            <li style="padding:2px 0;color:#64748b;">✗ C段：没提独特</li>
+            <li style="padding:2px 0;font-weight:600;background:#fef9c3;padding:2px 4px;border-radius:2px;">✓ D段末句：<strong>"unlike any other discovery – firstly because of their colour, and secondly because of their sheer number"</strong></li>
+            <li style="padding:2px 0;color:#64748b;">✗ E–G段：无</li>
+          </ul>
+        </div>
+        <div class="syn-box" style="margin-top:6px;">
+          <strong>匹配依据：</strong><br>
+          "unique" ↔ "<strong>unlike any other discovery</strong>"<br>
+          "two reasons" ↔ "<strong>firstly</strong>⋯<strong>secondly</strong>"<br>
+          一目了然，选出 D 不需要犹豫
+        </div>
+      `;
+    }
+  },
+  // --- 13: Q8 Matching ---
+  {
+    id: 'q8', num: '12 / 13',
+    title: 'Q8 · 段落信息匹配',
+    sub: '扫描关键词：examples / types of particle / 列举 → C段',
+    phase: '段落匹配 — 后做',
+    highlight: ['pC'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Find in which paragraph:</strong><br>
+          various examples of the types of <strong>particle</strong> that can be discovered in old teeth
+        </div>
+        <div class="scan-box">
+          <strong>🔍 扫描策略：</strong>
+          <p style="margin-top:4px;">找 <span class="scan-kw">颗粒类型列举</span>——一堆逗号隔开的物质名称：</p>
+          <ul style="margin:4px 0 0 16px;list-style:none;padding:0;">
+            <li style="padding:2px 0;color:#64748b;">✗ A段：无列举</li>
+            <li style="padding:2px 0;color:#64748b;">✗ B段：只说了 microscopic debris，没展开</li>
+            <li style="padding:2px 0;font-weight:600;background:#fef9c3;padding:2px 4px;border-radius:2px;">✓ C段：<strong>"Tree and grass pollen, spores, cotton fibres, medicinal plants and micro-charcoal"</strong></li>
+            <li style="padding:2px 0;color:#64748b;">✗ D–G段：无</li>
+          </ul>
+        </div>
+        <div class="syn-box" style="margin-top:6px;">
+          <strong>匹配依据：</strong><br>
+          "various examples of the types of particle" ↔ 一口气列举 6 种物质<br>
+          "that can be discovered in old teeth" ↔ C段说明这是从牙齿分析中发现的
+        </div>
+      `;
+    }
+  },
+  // --- 14: Q9 Matching ---
+  {
+    id: 'q9', num: '13 / 13',
+    title: 'Q9 · 段落信息匹配',
+    sub: '扫描关键词：cure illness / medicine / powder → F段',
+    phase: '段落匹配 — 后做',
+    highlight: ['pF'],
+    dim: true,
+    render() {
+      return `
+        <div class="q-text-display">
+          <strong>Find in which paragraph:</strong><br>
+          a suggestion that the blue pigment might have been used in medieval times to <strong>cure illness</strong>
+        </div>
+        <div class="scan-box">
+          <strong>🔍 扫描策略：</strong>
+          <p style="margin-top:4px;">找 <span class="scan-kw">治病</span> / <span class="scan-kw">药物</span>相关词——medicine / cure / treatment：</p>
+          <ul style="margin:4px 0 0 16px;list-style:none;padding:0;">
+            <li style="padding:2px 0;color:#64748b;">✗ A段：无</li>
+            <li style="padding:2px 0;color:#64748b;">✗ B段：无</li>
+            <li style="padding:2px 0;color:#64748b;">✗ C段：无</li>
+            <li style="padding:2px 0;color:#64748b;">✗ D段：无</li>
+            <li style="padding:2px 0;color:#64748b;">✗ E段：无</li>
+            <li style="padding:2px 0;font-weight:600;background:#fef9c3;padding:2px 4px;border-radius:2px;">✓ F段：<strong>"consumption of the powder as a medicine"</strong></li>
+            <li style="padding:2px 0;color:#64748b;">✗ G段：无</li>
+          </ul>
+        </div>
+        <div class="syn-box" style="margin-top:6px;">
+          <strong>匹配依据：</strong><br>
+          "cure illness" ↔ "<strong>medicine</strong>"<br>
+          F段中列举了多种可能性（画画、意外摄入、药物），其中唯一与治病相关的就是"as a medicine"
+        </div>
+      `;
+    }
+  },
+  // --- 15: Summary ---
+  {
+    id: 'finish',
+    num: '',
+    title: '参考答案汇总',
+    sub: '所有题目已完成 — 标注法流程总检查',
+    phase: '完成',
+    highlight: [],
+    dim: false,
+    render() {
+      return `
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;">
+          <p style="font-size:14px;font-weight:600;margin-bottom:8px;">真经解题流程回顾</p>
+          <ol style="margin:0 0 12px 16px;line-height:1.8;">
+          <li><strong>题型识别 + 优先序</strong> → 先做 Q1–Q5 和 Q10–Q13，后做 Q6–Q9</li>
+            <li><strong>定位 + 同义替换验证</strong> → 每道题在原文中找到对应句，标注替换关系</li>
+            <li><strong>排除法</strong> → 每个错误选项标注排除理由</li>
+            <li><strong>段落匹配后做</strong> → 先熟悉文章，再用关键词逐段扫描</li>
+          </ol>
+          <table class="summary-table">
+            <tr><th>题号</th><th>答案</th><th>题型</th><th>原文定位</th></tr>
+            <tr><td>Q1</td><td class="mc">C</td><td class="mc">Multiple Choice</td><td>A段末句 — increase the profile</td></tr>
+            <tr><td>Q2</td><td class="mc">A</td><td class="mc">Multiple Choice</td><td>C段末句 — not been much exploited</td></tr>
+            <tr><td>Q3</td><td class="mc">B</td><td class="mc">Multiple Choice</td><td>D段 — did not do any hard labour</td></tr>
+            <tr><td>Q4</td><td class="mc">A</td><td class="mc">Multiple Choice</td><td>F段末句 — brought in as finished product</td></tr>
+            <tr><td>Q5</td><td class="mc">D</td><td class="mc">Multiple Choice</td><td>G段 — largely invisible / rarely signed</td></tr>
+            <tr><td>Q6</td><td class="ma">B</td><td class="ma">Matching</td><td>B段末句 — hundreds⋯millions of years</td></tr>
+            <tr><td>Q7</td><td class="ma">D</td><td class="ma">Matching</td><td>D段末句 — firstly colour, secondly number</td></tr>
+            <tr><td>Q8</td><td class="ma">C</td><td class="ma">Matching</td><td>C段 — pollen, spores, fibres⋯列举</td></tr>
+            <tr><td>Q9</td><td class="ma">F</td><td class="ma">Matching</td><td>F段 — consumption as a medicine</td></tr>
+            <tr><td>Q10</td><td class="su">gold</td><td class="su">Summary</td><td>E段 — more precious than gold</td></tr>
+            <tr><td>Q11</td><td class="su">skill</td><td class="su">Summary</td><td>E段 — took great skill</td></tr>
+            <tr><td>Q12</td><td class="su">point</td><td class="su">Summary</td><td>G段 — make a fine point</td></tr>
+            <tr><td>Q13</td><td class="su">manuscripts</td><td class="su">Summary</td><td>G段 — intricate detail on manuscripts</td></tr>
+          </table>
+        </div>
+        <div style="margin-top:10px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px;font-size:13px;">
+          <strong style="color:#16a34a;">标注法流程总检查 ✅</strong><br>
+          每题定位词已用 ○ 圈出 ✓ | 同义替换已用 ～ 连接 ✓<br>
+          原文答案句旁写了【Qx】✓ | 排除项标 ✗、正确答案标 ✓ ✓ | 填空题从原文原样提取 ✓
+        </div>
+      `;
+    }
+  }
+];
+
+// ===== ENGINE =====
+let cur = 0;
+
+function reveal(el) {
+  el.classList.add('revealed');
+}
+
+function goStep(dir) {
+  const next = cur + dir;
+  if (next < 0 || next >= steps.length) return;
+  cur = next;
+  renderStep();
+}
+
+function renderStep() {
+  const s = steps[cur];
+
+  // Topbar
+  document.getElementById('stepLabel').textContent = s.num ? `第 ${s.num} 题` : '—';
+  document.getElementById('progressFill').style.width = ((cur + 1) / steps.length * 100) + '%';
+  const badge = document.getElementById('phaseBadge');
+  badge.textContent = s.phase;
+  badge.className = 'phase';
+  if (s.phase.includes('Multiple Choice')) badge.style.background = '#2563eb';
+  else if (s.phase.includes('Summary')) badge.style.background = '#dc2626';
+  else if (s.phase.includes('段落匹配')) badge.style.background = '#7c3aed';
+  else if (s.phase === '切换') badge.style.background = '#f59e0b';
+  else if (s.phase === '完成') badge.style.background = '#16a34a';
+  else badge.style.background = '#475569';
+
+  // Step header
+  document.getElementById('stepNum').textContent = s.num ? `第 ${s.num} 题` : '';
+  document.getElementById('stepTitle').textContent = s.title;
+  document.getElementById('stepSub').textContent = s.sub;
+
+  // Step body
+  document.getElementById('stepBody').innerHTML = s.render();
+
+  // Article highlighting
+  const paras = document.querySelectorAll('.para');
+  paras.forEach(p => { p.classList.remove('hl', 'dim'); });
+  if (s.highlight && s.highlight.length) {
+    s.highlight.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hl');
+    });
+    if (s.dim) {
+      paras.forEach(p => {
+        if (!s.highlight.includes(p.id)) p.classList.add('dim');
+      });
+    }
+  }
+
+  // Scroll article to first highlighted para
+  if (s.highlight && s.highlight.length) {
+    const first = document.getElementById(s.highlight[0]);
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    document.getElementById('articlePanel').scrollTop = 0;
+  }
+
+  // Scrol l step panel to top
+  document.getElementById('stepPanel').scrollTop = 0;
+
+  // Buttons
+  document.getElementById('prevBtn').disabled = (cur === 0);
+  const nextBtn = document.getElementById('nextBtn');
+  if (cur === steps.length - 1) {
+    nextBtn.textContent = '重新开始 ↺';
+    nextBtn.onclick = () => { cur = -1; goStep(1); };
+  } else {
+    nextBtn.textContent = '下一步 →';
+    nextBtn.onclick = () => goStep(1);
+  }
+}
+
+renderStep();
+</script>
+</body>
+</html>

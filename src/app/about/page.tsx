@@ -26,58 +26,20 @@ export default function AboutPage() {
       </section>
 
       {/* ========================================
-          2. 品牌故事 — 那个"忍不了"的瞬间
+          2. 品牌故事
           ======================================== */}
       <section className="space-y-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
           品牌故事
         </h2>
-
-        {/* 初心 */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-brand">
-            那个"忍不了"的瞬间
-          </h3>
-          <div className="space-y-4 text-neutral-600 leading-relaxed text-base sm:text-lg">
-            <p>
-              我们见过一个深圳家庭，在孩子英语上花了二十多万。一天排三节课，上了大半年。
-            </p>
-            <p>
-              但孩子的学习习惯很差。高课频不是在帮他，是在压垮他——他需要的不是更多课，是更少的课、更多的消化时间、先把习惯建立起来。
-            </p>
-            <p>
-              后来不出分，家长开始投诉老师。但我们看到的是：<strong className="text-neutral-900">
-                问题根本不在教学水平上。
-              </strong>{" "}
-              老师每天都在上课，但机构和顾问从不出现在关键节点——没有人调整方案、没有人跟家长同步真实情况、没有人说"现在这样不行，得换思路"。
-            </p>
-            <p className="text-neutral-900 font-medium">
-              老师成了替罪羊。收了钱的人，消失了。
-            </p>
-            <p>
-              那一刻我们意识到：这个行业，有些事不对。而且必须有人来做对的事。
-            </p>
-          </div>
-        </div>
-
-        {/* 态度 */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-brand">
-            "笨"的坚持
-          </h3>
-          <div className="space-y-4 text-neutral-600 leading-relaxed text-base sm:text-lg">
-            <p>
-              宁致做了一件行业看来很"傻"的事：我们敢跟家长说<strong className="text-neutral-900">
-                "课先少上点，孩子现在需要的是消化和习惯"
-              </strong>。我们不按课时收费来定目标，而以目标达成为准。
-            </p>
-            <p>
-              我们不推长课包，不打大折扣——因为课时是手段不是商品，孩子达成目标就该结课。每个学生配助教一对一督学，每天跟进，每周反馈。这些是成本，但砍了就不是宁致了。
-            </p>
-            <p>
-              我们的老师跟学生一起走进雅思考场——所有成绩真实可查。这些坚持让我们长得慢。但让每个家庭花的每一分钱，都花在真正的进步上。
-            </p>
-          </div>
+        <div className="space-y-4 text-neutral-600 leading-relaxed text-base sm:text-lg">
+          <p>
+            我们的故事，我们只写开头，其他留给别人去说。
+          </p>
+          <p>
+            宁致教育的品牌风格：<strong className="text-neutral-900">真诚、有底线</strong>。
+            我们不向学生和家长贩卖焦虑，只讲事实；我们不消耗老师精力，只作后盾。
+          </p>
         </div>
       </section>
 
@@ -147,28 +109,33 @@ export default function AboutPage() {
       </section>
 
       {/* ========================================
-          4. 三条承诺
+          4. 我们的承诺
           ======================================== */}
       <section className="space-y-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
-          宁致的承诺
+          我们的承诺
         </h2>
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {[
             {
               num: "01",
-              title: "目标到了就结课",
-              desc: "绝不多排一节无意义的课。课时是手段不是商品。",
+              title: "师资宣传真实",
+              desc: "所介绍的老师，背景及经验真实可查，介绍的老师即排课的老师，不会临时换人。",
             },
             {
               num: "02",
-              title: "每天盯，每周报",
-              desc: "你永远知道孩子在学什么、卡在哪、什么时候能出分。",
+              title: "课程体系透明",
+              desc: "清晰地和家长介绍所用教材的原因，每节课教什么，为什么这么安排。",
             },
             {
               num: "03",
-              title: "出分靠真实能力",
-              desc: "宁致交出去的每一个分数，都是孩子自己在考场上拿的。",
+              title: "合理规划课时",
+              desc: "按需制定学习目标后，根据当前情况及阶段性学习成果，合理规划及调整课时，不多报乱报。",
+            },
+            {
+              num: "04",
+              title: "反馈及时",
+              desc: "每天盯（授课反馈及学生作业完成情况当日发出）、每月测（每月对所学内容进行模考检测）、每阶段复盘。",
             },
           ].map((p) => (
             <div key={p.num} className="bg-neutral-50 rounded-2xl p-6 sm:p-8 space-y-3">
@@ -242,7 +209,7 @@ export default function AboutPage() {
         </h2>
         <div className="bg-neutral-50 rounded-2xl p-6 sm:p-8 text-center">
           <p className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-3">
-            智者 × 反抗者
+            真诚、有底线
           </p>
           <p className="text-lg text-neutral-500">
             "懂行的说实话的人"
